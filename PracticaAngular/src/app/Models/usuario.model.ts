@@ -1,4 +1,4 @@
-export class Empleado {
+export class Usuario {
   constructor(name: string, ap_paterno: string, ap_materno: string, telefono: string, codigo: string, activo: boolean, rol_id: number, email: string, password: string) {
     this.name = name;
     this.ap_paterno = ap_paterno;

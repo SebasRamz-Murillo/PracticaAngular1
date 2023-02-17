@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Route,ActivatedRoute, ParamMap } from '@angular/router';
+import { Usuario } from '../../Models/usuario.model';
 
 @Component({
   selector: 'app-usuario',
@@ -9,7 +10,6 @@ import { Route,ActivatedRoute, ParamMap } from '@angular/router';
 export class UsuarioComponent {
 
   constructor(){
-
   }
 
   ngOnInit(): void{
