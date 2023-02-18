@@ -147,11 +147,7 @@
               aria-labelledby="dropdownLargeButton"
             >
               <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Chefs</a
-                >
+                <a routerLink="/chef" routerLinkActive="active" ariaCurrentWhenActive="page" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chefs</a>
               </li>
               <li>
                 <a
@@ -182,3 +178,4 @@
   </div>
   <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </nav>
+<router-outlet></router-outlet>
