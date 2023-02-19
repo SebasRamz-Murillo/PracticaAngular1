@@ -20,6 +20,9 @@ import { IngredienteFormComponent } from './components/ingrediente-form/ingredie
 import { IngredienteFormEditComponent } from './components/ingrediente-form-edit/ingrediente-form-edit.component';
 import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingrediente-delete.component';
 import { RecetaComponent } from './components/receta/receta.component';
+import { RecetaFormComponent } from './components/receta-form/receta-form.component';
+import { RecetaFormEditComponent } from './components/receta-form-edit/receta-form-edit.component';
+import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { RecetaComponent } from './components/receta/receta.component';
     IngredienteFormEditComponent,
     IngredienteDeleteComponent,
     RecetaComponent,
+    RecetaFormComponent,
+    RecetaFormEditComponent,
+    RecetaDeleteComponent,
 
   ],
   imports: [

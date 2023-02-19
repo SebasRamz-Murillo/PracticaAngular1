@@ -12,6 +12,9 @@ import { IngredienteFormComponent } from './components/ingrediente-form/ingredie
 import { IngredienteFormEditComponent } from './components/ingrediente-form-edit/ingrediente-form-edit.component';
 import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingrediente-delete.component';
 import { RecetaComponent } from './components/receta/receta.component';
+import { RecetaFormComponent } from './components/receta-form/receta-form.component';
+import { RecetaFormEditComponent } from './components/receta-form-edit/receta-form-edit.component';
+import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
 
 const routes: Routes = [
   { path: 'home', component: HeaderComponent },
@@ -26,6 +29,10 @@ const routes: Routes = [
   { path: 'ingredientes/delete/:id', component: IngredienteDeleteComponent},
 
   { path: 'recetas', component: RecetaComponent},
+  { path: 'recetas/create', component: RecetaFormComponent},
+  { path: 'recetas/edit/:id', component: RecetaFormEditComponent},
+  { path: 'recetas/delete/:id', component: RecetaDeleteComponent},
+
   { path: 'usuarios', component: UsuarioComponent },
   { path: '**', component: PageNoFoundComponent }
 ];
