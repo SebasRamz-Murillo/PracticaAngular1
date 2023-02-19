@@ -23,6 +23,18 @@ import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 import { RecetaFormEditComponent } from './components/receta-form-edit/receta-form-edit.component';
 import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
+import { MapaComponent } from './components/mh/mapa/mapa.component';
+import { MapaFormComponent } from './components/mh/mapa-form/mapa-form.component';
+import { MapaFormEditComponent } from './components/mh/mapa-form-edit/mapa-form-edit.component';
+import { MapaDeleteComponent } from './components/mh/mapa-delete/mapa-delete.component';
+import { ObjetoComponent } from './components/mh/objeto/objeto.component';
+import { ObjetoFormComponent } from './components/mh/objeto-form/objeto-form.component';
+import { ObjetoFormEditComponent } from './components/mh/objeto-form-edit/objeto-form-edit.component';
+import { ObjetoDeleteComponent } from './components/mh/objeto-delete/objeto-delete.component';
+import { ZonaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.component';
+import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
+import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
+import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +57,18 @@ import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.
     RecetaFormComponent,
     RecetaFormEditComponent,
     RecetaDeleteComponent,
+    MapaComponent,
+    MapaFormComponent,
+    MapaFormEditComponent,
+    MapaDeleteComponent,
+    ObjetoComponent,
+    ObjetoFormComponent,
+    ObjetoFormEditComponent,
+    ObjetoDeleteComponent,
+    ZonaObjetoComponent,
+    ZonaObjetoFormComponent,
+    ZonaObjetoFormEditComponent,
+    ZonaDeleteComponent,
 
   ],
   imports: [

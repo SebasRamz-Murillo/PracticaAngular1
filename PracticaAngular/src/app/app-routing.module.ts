@@ -15,6 +15,7 @@ import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 import { RecetaFormEditComponent } from './components/receta-form-edit/receta-form-edit.component';
 import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
+import { MapaComponent } from './components/mh/mapa/mapa.component';
 
 const routes: Routes = [
   { path: 'home', component: HeaderComponent },
@@ -32,6 +33,9 @@ const routes: Routes = [
   { path: 'recetas/create', component: RecetaFormComponent},
   { path: 'recetas/edit/:id', component: RecetaFormEditComponent},
   { path: 'recetas/delete/:id', component: RecetaDeleteComponent},
+
+  { path: 'mapas', component: MapaComponent},
+
 
   { path: 'usuarios', component: UsuarioComponent },
   { path: '**', component: PageNoFoundComponent }
