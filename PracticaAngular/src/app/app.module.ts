@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { PageNoFoundComponent } from './components/page-no-found/page-no-found.component';
@@ -22,6 +22,7 @@ import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingr
 import { RecetaComponent } from './components/receta/receta.component';
 import { CodigoComponent } from './components/codigo/codigo.component';
 import { RegistroComponent } from './components/registro/registro.component';
+
 
 @NgModule({
   declarations: [
