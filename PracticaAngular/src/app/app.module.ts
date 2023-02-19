@@ -27,6 +27,7 @@ import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.
 import { CodigoComponent } from './components/codigo/codigo.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
+import { UsuarioCodigoVerificacionComponent } from './components/usuario-codigo-verificacion/usuario-codigo-verificacion.component';
 
 
 
@@ -53,7 +54,8 @@ import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-
     RecetaDeleteComponent,
     CodigoComponent,
     RegistroComponent,
-    UsuarioRegistroComponent
+    UsuarioRegistroComponent,
+    UsuarioCodigoVerificacionComponent
   ],
   imports: [
     BrowserModule,

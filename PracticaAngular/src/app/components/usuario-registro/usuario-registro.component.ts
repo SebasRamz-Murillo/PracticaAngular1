@@ -5,6 +5,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
 import { Location } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,6 +21,7 @@ export class UsuarioRegistroComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private location: Location,
     private loginService: LoginService,
   ) {
@@ -34,7 +37,7 @@ export class UsuarioRegistroComponent {
   OnSubmit(values: Usuario) {
     this.loginService.registrarUsuario(values).subscribe();
     this.form.reset();
-    this.location.back();
+    this.router.navigate(['registro/verificar']);
   }
 }
 

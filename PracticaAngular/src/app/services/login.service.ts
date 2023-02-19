@@ -14,6 +14,7 @@ export class LoginService {
   APIURL = environment.URL_API+"/usuario"
   private _refresh$ = new Subject<void>();
   private crearUsuario = this.APIURL+'/crear'
+  private obtenerRutaSigned = this.APIURL+'/codigo'
   private logearUsuario = this.APIURL+'/login'
   private logoutUsuario = this.APIURL+'/logout'
   private infoUsuario = this.APIURL+'/info'
@@ -26,11 +27,20 @@ export class LoginService {
   get_refresh$() {
     return this._refresh$;
   }
-  getInfoUsuario(): Observable<Usuario>{
-    return this.http.get<Usuario>(this.infoUsuario).pipe(retry(3), catchError(this.handleError))
+  getInfoUsuario(): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.infoUsuario).pipe(retry(3), catchError(this.handleError))
+  }
+  getRutaSigned(): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.obtenerRutaSigned).pipe(retry(3), catchError(this.handleError))
   }
   registrarUsuario(usuario:Usuario): Observable<Usuario>{
     return this.http.post<Usuario>(this.crearUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
+  }
+  enviarCodigo(usuario:any): Observable<any>{
+    return this.http.post<any>(this.codigo, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));

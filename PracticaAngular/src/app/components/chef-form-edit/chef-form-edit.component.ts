@@ -20,6 +20,7 @@ export class ChefFormEditComponent implements OnInit{
   chef: Chef = { id: 0, nombre: '', ap_paterno: '', ap_materno: '', nacionalidad: '', edad: 0 };
   suscription?:Subscription;
   id:number = 0;
+
   constructor(private route: ActivatedRoute,
     private chefService: ChefService,
     location: Location,

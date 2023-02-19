@@ -18,11 +18,14 @@ import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.
 import { MapaComponent } from './components/mh/mapa/mapa.component';
 import { LoginComponent } from './components/login/login.component';
 import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
+import { UsuarioCodigoVerificacionComponent } from './components/usuario-codigo-verificacion/usuario-codigo-verificacion.component';
 
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
   { path: 'registro', component: UsuarioRegistroComponent },
+  { path: 'registro/verificar', component: UsuarioCodigoVerificacionComponent},
+
   { path: 'chef', component: ChefComponent },
   { path: 'chef/create', component: ChefFormComponent},
   { path: 'chef/edit/:id', component: ChefFormEditComponent },

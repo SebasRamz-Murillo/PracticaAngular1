@@ -1,0 +1,33 @@
+<div class="container">
+  <ul>
+    <li *ngFor="let r of usuario">
+      {{ r.ruta }}
+    </li>
+  </ul>
+  <h1 class="text-center text-4xl text-cyan-700 font-mono">Ingresa el codigo para activar tu cuenta</h1>
+  <div class="" style="margin: auto; width: 30%">
+    <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+      <div class="" style="width: 100%; margin: auto">
+        <label
+          for="ruta"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Ingresa el codigo</label
+        >
+        <input
+          type="text"
+          formControlName="codigo"
+          id="codigo"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="abelardoreyes256@gmail.com"
+          required
+        />
+        <p
+          *ngIf="form.get('codigo')?.invalid"
+          class="text-red-500 text-xs italic"
+        >
+          El Email es obligatorio
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
