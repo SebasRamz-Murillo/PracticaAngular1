@@ -11,15 +11,15 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
-  APIURL = environment.URL_API+"usuario"
+  APIURL = environment.URL_API+"/usuario"
   private _refresh$ = new Subject<void>();
-  private crearUsuario = this.APIURL+'crear'
-  private logearUsuario = this.APIURL+'login'
-  private logoutUsuario = this.APIURL+'logout'
-  private infoUsuario = this.APIURL+'info'
-  private actualizarUsuario = this.APIURL+'update'
-  private verificacion = environment.URL_API+'verify'
-  private codigo = environment.URL_API+'codigo'
+  private crearUsuario = this.APIURL+'/crear'
+  private logearUsuario = this.APIURL+'/login'
+  private logoutUsuario = this.APIURL+'/logout'
+  private infoUsuario = this.APIURL+'/info'
+  private actualizarUsuario = this.APIURL+'/update'
+  private verificacion = environment.URL_API+'/verify'
+  private codigo = environment.URL_API+'/codigo'
 
 
   constructor(private http: HttpClient) { }

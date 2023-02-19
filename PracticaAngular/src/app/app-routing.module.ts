@@ -17,10 +17,12 @@ import { RecetaFormEditComponent } from './components/receta-form-edit/receta-fo
 import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
 import { MapaComponent } from './components/mh/mapa/mapa.component';
 import { LoginComponent } from './components/login/login.component';
+import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
 
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
+  { path: 'registro', component: UsuarioRegistroComponent },
   { path: 'chef', component: ChefComponent },
   { path: 'chef/create', component: ChefFormComponent},
   { path: 'chef/edit/:id', component: ChefFormEditComponent },
