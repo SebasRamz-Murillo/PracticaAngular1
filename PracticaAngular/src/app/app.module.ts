@@ -57,3 +57,4 @@ import { RegistroComponent } from './components/registro/registro.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
