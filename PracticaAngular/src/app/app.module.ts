@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { PageNoFoundComponent } from './components/page-no-found/page-no-found.component';
@@ -20,9 +20,9 @@ import { IngredienteFormComponent } from './components/ingrediente-form/ingredie
 import { IngredienteFormEditComponent } from './components/ingrediente-form-edit/ingrediente-form-edit.component';
 import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingrediente-delete.component';
 import { RecetaComponent } from './components/receta/receta.component';
-import { RecetaFormComponent } from './components/receta-form/receta-form.component';
-import { RecetaFormEditComponent } from './components/receta-form-edit/receta-form-edit.component';
-import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
+import { CodigoComponent } from './components/codigo/codigo.component';
+import { RegistroComponent } from './components/registro/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -42,9 +42,8 @@ import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.
     IngredienteFormEditComponent,
     IngredienteDeleteComponent,
     RecetaComponent,
-    RecetaFormComponent,
-    RecetaFormEditComponent,
-    RecetaDeleteComponent,
+    CodigoComponent,
+    RegistroComponent,
 
   ],
   imports: [
@@ -58,3 +57,4 @@ import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
