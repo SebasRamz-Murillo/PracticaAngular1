@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChefService } from 'src/app/services/chef.service';
 import { Chef } from 'src/app/models/chef.model';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ChefFormComponent {
 
   constructor(
     private fb: FormBuilder,
+    private location: Location,
     private chefService: ChefService
   ){
     this.form = this.fb.group({
@@ -31,5 +33,6 @@ export class ChefFormComponent {
   OnSubmit(values: Chef) {
     this.chefService.addChefs(values).subscribe();
     this.form.reset();
+    this.location.back();
   }
 }

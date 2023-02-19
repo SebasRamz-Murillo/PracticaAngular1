@@ -5,11 +5,27 @@ import { PageNoFoundComponent } from './components/page-no-found/page-no-found.c
 import { HeaderComponent } from './components/header/header.component';
 import { ChefComponent } from './components/chef/chef.component';
 import { ChefFormEditComponent } from './components/chef-form-edit/chef-form-edit.component';
+import { ChefDeleteComponent } from './components/chef-delete/chef-delete.component';
+import { IngredienteComponent } from './components/ingrediente/ingrediente.component';
+import { ChefFormComponent } from './components/chef-form/chef-form.component';
+import { IngredienteFormComponent } from './components/ingrediente-form/ingrediente-form.component';
+import { IngredienteFormEditComponent } from './components/ingrediente-form-edit/ingrediente-form-edit.component';
+import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingrediente-delete.component';
+import { RecetaComponent } from './components/receta/receta.component';
 
 const routes: Routes = [
   { path: 'home', component: HeaderComponent },
   { path: 'chef', component: ChefComponent },
+  { path: 'chef/create', component: ChefFormComponent},
   { path: 'chef/edit/:id', component: ChefFormEditComponent },
+  { path: 'chef/delete/:id', component: ChefDeleteComponent},
+
+  { path: 'ingredientes', component: IngredienteComponent },
+  { path: 'ingredientes/create', component: IngredienteFormComponent},
+  { path: 'ingredientes/edit/:id', component: IngredienteFormEditComponent},
+  { path: 'ingredientes/delete/:id', component: IngredienteDeleteComponent},
+
+  { path: 'recetas', component: RecetaComponent},
   { path: 'usuarios', component: UsuarioComponent },
   { path: '**', component: PageNoFoundComponent }
 ];

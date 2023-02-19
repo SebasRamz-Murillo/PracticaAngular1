@@ -6,6 +6,7 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-chef-form-edit',
@@ -19,7 +20,10 @@ export class ChefFormEditComponent implements OnInit{
   chef: Chef = { id: 0, nombre: '', ap_paterno: '', ap_materno: '', nacionalidad: '', edad: 0 };
   suscription?:Subscription;
   id:number = 0;
-  constructor(private route: ActivatedRoute,private chefService: ChefService,private fb: FormBuilder){
+  constructor(private route: ActivatedRoute,
+    private chefService: ChefService,
+    location: Location,
+    private fb: FormBuilder){
     this.form = this.fb.group({
       id: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -60,5 +64,8 @@ export class ChefFormEditComponent implements OnInit{
     OnSubmit(values: Chef) {
     this.chefService.updateChef(values).subscribe();
     this.form.reset();
+  }
+  goBack(){
+
   }
 }

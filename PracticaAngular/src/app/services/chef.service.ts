@@ -4,19 +4,20 @@ import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Chef } from '../models/chef.model';
 import { tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChefService {
-
+  APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
-  private obtenerChefs = 'http://127.0.0.1:8000/api/chef/info';
-  private crearChef = 'http://127.0.0.1:8000/api/chef/';
-  private obtenerChef = 'http://127.0.0.1:8000/api/chef/info/';
-  private modificarChef = 'http://127.0.0.1:8000/api/chef/update/'
+  private obtenerChefs = this.APIURL+'/chef/info';
+  private crearChef = this.APIURL+'/chef/';
+  private obtenerChef = this.APIURL+'/chef/info/';
+  private modificarChef = this.APIURL+'/chef/update/'
+  private eliminarChef = this.APIURL+'/chef/delete/'
 
   constructor(private http: HttpClient) { }
   get_refresh$() {
@@ -39,6 +40,9 @@ export class ChefService {
       this._refresh$.next();
     }
     ));
+  }
+  deleteChef(chef:Chef): Observable<Chef[]> {
+    return this.http.delete<Chef[]>(this.eliminarChef + chef.id).pipe(retry(3), catchError(this.handleError))
   }
 
   private handleError(error: HttpErrorResponse) {

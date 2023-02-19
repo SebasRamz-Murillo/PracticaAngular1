@@ -13,6 +13,13 @@ import { TableComponent } from './components/table/table.component';
 import { ChefComponent } from './components/chef/chef.component';
 import { ChefFormComponent } from './components/chef-form/chef-form.component';
 import { ChefFormEditComponent } from './components/chef-form-edit/chef-form-edit.component';
+import { ChefDeleteComponent } from './components/chef-delete/chef-delete.component';
+import { IngredienteComponent } from './components/ingrediente/ingrediente.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { IngredienteFormComponent } from './components/ingrediente-form/ingrediente-form.component';
+import { IngredienteFormEditComponent } from './components/ingrediente-form-edit/ingrediente-form-edit.component';
+import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingrediente-delete.component';
+import { RecetaComponent } from './components/receta/receta.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,13 @@ import { ChefFormEditComponent } from './components/chef-form-edit/chef-form-edi
     ChefComponent,
     ChefFormComponent,
     ChefFormEditComponent,
+    ChefDeleteComponent,
+    IngredienteComponent,
+    NavBarComponent,
+    IngredienteFormComponent,
+    IngredienteFormEditComponent,
+    IngredienteDeleteComponent,
+    RecetaComponent,
 
   ],
   imports: [
