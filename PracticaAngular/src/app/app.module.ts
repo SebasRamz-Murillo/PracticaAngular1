@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { PageNoFoundComponent } from './components/page-no-found/page-no-found.component';
@@ -20,6 +20,7 @@ import { IngredienteFormComponent } from './components/ingrediente-form/ingredie
 import { IngredienteFormEditComponent } from './components/ingrediente-form-edit/ingrediente-form-edit.component';
 import { IngredienteDeleteComponent } from './components/ingrediente-delete/ingrediente-delete.component';
 import { RecetaComponent } from './components/receta/receta.component';
+<<<<<<< HEAD
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 import { RecetaFormEditComponent } from './components/receta-form-edit/receta-form-edit.component';
 import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
@@ -35,6 +36,11 @@ import { ZonaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.com
 import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
 import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
 import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
+=======
+import { CodigoComponent } from './components/codigo/codigo.component';
+import { RegistroComponent } from './components/registro/registro.component';
+
+>>>>>>> fde83053b3182644e3fec83e581227fb8c1f72a1
 
 @NgModule({
   declarations: [
@@ -54,6 +60,7 @@ import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.com
     IngredienteFormEditComponent,
     IngredienteDeleteComponent,
     RecetaComponent,
+<<<<<<< HEAD
     RecetaFormComponent,
     RecetaFormEditComponent,
     RecetaDeleteComponent,
@@ -69,6 +76,10 @@ import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.com
     ZonaObjetoFormComponent,
     ZonaObjetoFormEditComponent,
     ZonaDeleteComponent,
+=======
+    CodigoComponent,
+    RegistroComponent,
+>>>>>>> fde83053b3182644e3fec83e581227fb8c1f72a1
 
   ],
   imports: [
@@ -82,3 +93,4 @@ import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.com
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
