@@ -30,8 +30,6 @@ export class RegistroComponent {
     })
   }
   OnSubmit(values: Usuario) {
-    this.usuarioService.registrarUsuario(values).subscribe();
-    this.form.reset();
-    this.location.back();
+
   }
 }
