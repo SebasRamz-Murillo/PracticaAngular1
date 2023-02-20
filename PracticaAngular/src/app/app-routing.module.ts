@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: 'recetas/delete/:id', component: RecetaDeleteComponent},
 
   { path: 'mapas', component: MapaComponent},
-  { path: 'mapas/create', component: MapaFormComponent},
+  { path: 'mapa/create', component: MapaFormComponent},
   { path: 'mapas/edit/:id', component: MapaFormEditComponent},
   { path: 'mapas/delete/:id', component: MapaDeleteComponent},
 
