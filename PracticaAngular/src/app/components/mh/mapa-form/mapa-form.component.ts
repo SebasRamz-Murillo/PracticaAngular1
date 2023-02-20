@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MapaService } from 'src/app/services/mapa.service';
-import { Mapa } from 'src/app/models/mapa.model';
+import { Mapa } from 'src/app/Models/mapa.model';
 import { Location } from '@angular/common';
 
 
@@ -24,10 +24,8 @@ export class MapaFormComponent {
   ){
     this.form = this.fb.group({
       nombre: ['', Validators.required],
-      ap_paterno: ['', Validators.required],
-      ap_materno: ['', Validators.required],
-      nacionalidad: ['', Validators.required],
-      edad: ['', Validators.required]
+      totalZonas: ['', [Validators.required, Validators.min(1)]],
+      descripcion: ['', Validators.required],
     })
   }
   OnSubmit(values: Mapa) {

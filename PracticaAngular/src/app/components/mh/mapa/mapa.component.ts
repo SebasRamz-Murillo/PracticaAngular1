@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Mapa } from 'src/app/models/mapa.model';
+import { Mapa } from 'src/app/Models/mapa.model';
 import { MapaService } from 'src/app/services/mapa.service';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
