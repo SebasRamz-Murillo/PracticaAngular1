@@ -15,16 +15,15 @@ import { Injectable } from '@angular/core';
 export class ChefComponent implements OnInit, OnDestroy {
   chefs: Chef[] = [];
   suscription?: Subscription;
-  private token: string = '';
 
-  constructor(private chefService: ChefService,
-    private httpInterceptor: HttpInterceptor) { }
+
+  constructor(private chefService: ChefService) { }
 
   ngOnInit(): void {
     this.getChefs();
     this.suscription = this.chefService.get_refresh$().subscribe(() => {
       this.getChefs();
-      this.token = this.httpInterceptor.();
+
     }
     );
   }

@@ -69,7 +69,7 @@ import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-ed
     CodigoComponent,
     RegistroComponent,
     UsuarioRegistroComponent,
-    UsuarioCodigoVerificacionComponent
+    UsuarioCodigoVerificacionComponent,
     MapaComponent,
     MapaDeleteComponent,
     MapaFormComponent,
