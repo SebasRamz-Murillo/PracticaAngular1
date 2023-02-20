@@ -45,7 +45,7 @@
 
     <div class="mb-6" style="width: 50%; margin: auto">
       <label
-        for="edad"
+        for="totalZonas"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Total de zonas</label
       >
@@ -66,6 +66,11 @@
       >
         El total de las zonas en el mapa es obligatorio
       </p>
+      <p *ngIf="form.get('totalZonas')?.invalid && form.get('totalZonas')?.errors?.['min']" class="text-red-500 text-xs italic">
+        El total de las zonas en el mapa debe ser mayor o igual a 1
+      </p>
+
+
     </div>
     <div
       class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
