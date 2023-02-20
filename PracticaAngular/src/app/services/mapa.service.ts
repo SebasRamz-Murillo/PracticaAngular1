@@ -21,7 +21,7 @@ export class MapaService {
   get_refresh$() {
     return this._refresh$;
   }
-  getIMapa(): Observable<Mapa[]> {
+  getMapas(): Observable<Mapa[]> {
     return this.http.get<Mapa[]>(this.obtenerMapas).pipe(retry(3), catchError(this.handleError))
   }
   addMapa(mapa: Mapa): Observable<Mapa> {
