@@ -3,6 +3,7 @@ import { Chef } from 'src/app/models/chef.model';
 import { ChefService } from 'src/app/services/chef.service';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-chef',
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class ChefComponent implements OnInit, OnDestroy {
   chefs: Chef[] = [];
   suscription?:Subscription;
+
 
   constructor(private chefService: ChefService) { }
   ngOnInit(): void {

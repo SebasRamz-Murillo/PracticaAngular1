@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,7 @@ import { CodigoComponent } from './components/codigo/codigo.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
 import { UsuarioCodigoVerificacionComponent } from './components/usuario-codigo-verificacion/usuario-codigo-verificacion.component';
+import { TokenInterceptor } from './Interceptors/token.interceptor';
 
 
 
@@ -64,7 +65,7 @@ import { UsuarioCodigoVerificacionComponent } from './components/usuario-codigo-
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

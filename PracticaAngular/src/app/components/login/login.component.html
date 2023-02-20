@@ -7,7 +7,7 @@
     </h3>
 
     <
-    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+    <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
       <div class="mb-6">
         <label
           for="email"
