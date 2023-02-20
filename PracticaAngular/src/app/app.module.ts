@@ -31,6 +31,14 @@ import { MapaDeleteComponent } from './components/mh/mapa-delete/mapa-delete.com
 import { MapaFormComponent } from './components/mh/mapa-form/mapa-form.component';
 import { MapaObjetoService } from './services/mapa-objeto.service';
 import { MapaFormEditComponent } from './components/mh/mapa-form-edit/mapa-form-edit.component';
+import { ObjetoComponent } from './components/mh/objeto/objeto.component';
+import { ObjetoDeleteComponent } from './components/mh/objeto-delete/objeto-delete.component';
+import { ObjetoFormComponent } from './components/mh/objeto-form/objeto-form.component';
+import { ObjetoFormEditComponent } from './components/mh/objeto-form-edit/objeto-form-edit.component';
+import { ZonaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.component';
+import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
+import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
+import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
 
 
 
@@ -61,6 +69,14 @@ import { MapaFormEditComponent } from './components/mh/mapa-form-edit/mapa-form-
     MapaDeleteComponent,
     MapaFormComponent,
     MapaFormEditComponent,
+    ObjetoComponent,
+    ObjetoDeleteComponent,
+    ObjetoFormComponent,
+    ObjetoFormEditComponent,
+    ZonaObjetoComponent,
+    ZonaDeleteComponent,
+    ZonaObjetoFormComponent,
+    ZonaObjetoFormEditComponent
   ],
   imports: [
     BrowserModule,
