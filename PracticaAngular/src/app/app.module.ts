@@ -26,6 +26,11 @@ import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.
 
 import { CodigoComponent } from './components/codigo/codigo.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { MapaComponent } from './components/mh/mapa/mapa.component';
+import { MapaDeleteComponent } from './components/mh/mapa-delete/mapa-delete.component';
+import { MapaFormComponent } from './components/mh/mapa-form/mapa-form.component';
+import { MapaObjetoService } from './services/mapa-objeto.service';
+import { MapaFormEditComponent } from './components/mh/mapa-form-edit/mapa-form-edit.component';
 
 
 
@@ -51,7 +56,11 @@ import { RegistroComponent } from './components/registro/registro.component';
     RecetaFormEditComponent,
     RecetaDeleteComponent,
     CodigoComponent,
-    RegistroComponent
+    RegistroComponent,
+    MapaComponent,
+    MapaDeleteComponent,
+    MapaFormComponent,
+    MapaFormEditComponent,
   ],
   imports: [
     BrowserModule,
