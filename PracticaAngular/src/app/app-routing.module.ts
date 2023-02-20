@@ -24,7 +24,7 @@ const routes: Routes = [
 
   { path: '', component: LoginComponent },
   { path: 'registro', component: UsuarioRegistroComponent },
-  { path: 'registro/verificar', component: UsuarioCodigoVerificacionComponent},
+  { path: 'registro/verificar/:url', component: UsuarioCodigoVerificacionComponent},
 
   { path: 'chef', component: ChefComponent },
   { path: 'chef/create', component: ChefFormComponent},

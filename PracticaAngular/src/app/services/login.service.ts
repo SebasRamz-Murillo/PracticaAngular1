@@ -20,37 +20,24 @@ export class LoginService {
   private infoUsuario = this.APIURL+'/info'
   private actualizarUsuario = this.APIURL+'/update'
   private verificacion = environment.URL_API+'/verify'
-  private codigo = environment.URL_API+'/codigo'
+  private codigo = environment.URL_SIGNED
 
 
   constructor(private http: HttpClient) { }
   get_refresh$() {
     return this._refresh$;
   }
-  getInfoUsuario(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(this.infoUsuario).pipe(retry(3), catchError(this.handleError))
-  }
+  //Peticiones para registrarse
   getRutaSigned(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.obtenerRutaSigned).pipe(retry(3), catchError(this.handleError))
   }
-  registrarUsuario(usuario:Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>(this.crearUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+    enviarCodigo(usuario:Usuario,url:string): Observable<Usuario>{
+    return this.http.post<Usuario>(url, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
-  enviarCodigo(usuario:any): Observable<any>{
-    return this.http.post<any>(this.codigo, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
-      this._refresh$.next();
-    }
-    ));
-  }
-  updateUsuario(usuario:Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(this.actualizarUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
-      this._refresh$.next();
-    }
-    ));
-  }
+  //Peticiones para logearse
   login(usuario:Usuario): Observable<Usuario>{
     return this.http.post<Usuario>(this.logearUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
@@ -63,6 +50,24 @@ export class LoginService {
     }
     ));
   }
+  //Crud de Usuarios
+  getInfoUsuario(): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.infoUsuario).pipe(retry(3), catchError(this.handleError))
+  }
+
+  registrarUsuario(usuario:Usuario): Observable<Usuario>{
+    return this.http.post<Usuario>(this.crearUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
+  }
+  updateUsuario(usuario:Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(this.actualizarUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 400) {

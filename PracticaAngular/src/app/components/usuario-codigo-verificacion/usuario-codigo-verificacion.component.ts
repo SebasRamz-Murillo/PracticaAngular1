@@ -7,6 +7,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-codigo-verificacion',
@@ -14,12 +16,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./usuario-codigo-verificacion.component.css']
 })
 export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
+  url: string = '';
   form: FormGroup;
   usuario: Usuario[] = [];
   suscription?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private location: Location,
     private loginService: LoginService
@@ -29,23 +33,19 @@ export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
     })
   }
   ngOnInit(): void {
-    this.getruta();
-    this.suscription = this.loginService.get_refresh$().subscribe(() => {
-      this.getruta();
-    }
-    );
-    console.log("ngOnInit");
+    this.url = this.route.snapshot.params['url'];
   }
   ngOnDestroy(): void {
     this.suscription?.unsubscribe();
     console.log('Se destruyó el componente');
   }
-  OnSubmit(values: any) {
-    this.loginService.enviarCodigo(values).subscribe();
+  OnSubmit(values: Usuario, url: string) {
+    this.route
+    environment.URL_SIGNED = this.url;
+    console.log(environment.URL_SIGNED);
+    this.router.navigate(['']);
+    this.loginService.enviarCodigo(values,url).subscribe();
     this.form.reset();
-    this.location.back();
   }
-  getruta() {
-    this.loginService.getRutaSigned().subscribe(data => this.usuario = data);
-  }
+
 }
