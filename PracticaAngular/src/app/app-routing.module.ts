@@ -17,6 +17,8 @@ import { RecetaFormEditComponent } from './components/receta-form-edit/receta-fo
 import { RecetaDeleteComponent } from './components/receta-delete/receta-delete.component';
 import { MapaComponent } from './components/mh/mapa/mapa.component';
 import { LoginComponent } from './components/login/login.component';
+import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
+import { UsuarioCodigoVerificacionComponent } from './components/usuario-codigo-verificacion/usuario-codigo-verificacion.component';
 import { MapaFormComponent } from './components/mh/mapa-form/mapa-form.component';
 import { MapaFormEditComponent } from './components/mh/mapa-form-edit/mapa-form-edit.component';
 import { MapaDeleteComponent } from './components/mh/mapa-delete/mapa-delete.component';
@@ -33,6 +35,9 @@ import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.com
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
+  { path: 'registro', component: UsuarioRegistroComponent },
+  { path: 'registro/verificar/:url', component: UsuarioCodigoVerificacionComponent},
+
   { path: 'chef', component: ChefComponent },
   { path: 'chef/create', component: ChefFormComponent},
   { path: 'chef/edit/:id', component: ChefFormEditComponent },
