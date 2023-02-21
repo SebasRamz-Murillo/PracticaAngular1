@@ -1,4 +1,5 @@
 export interface Usuario {
+  id: number;
   name: string;
   ap_paterno: string;
   ap_materno: string;
