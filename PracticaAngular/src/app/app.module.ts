@@ -97,7 +97,7 @@ import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
