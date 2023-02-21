@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from 'src/app/models/usuario.model';
 import { environment } from 'src/environments/environment';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -15,14 +16,21 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  form: FormGroup;
   usuario: Usuario[] = [];
   suscription?: Subscription;
   myToken = localStorage.getItem('token') || '';
   constructor(
     private loginService: LoginService,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      token: ['', Validators.required]
+    });
+  }
   ngOnInit(): void {
+    this.myToken
     const token = this.myToken;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
@@ -30,4 +38,9 @@ export class HeaderComponent {
 
   }
 
+
+  OnSubmit(values: Usuario) {
+    this.loginService.logout(values).subscribe();
+    this.form.reset();
+  }
 }

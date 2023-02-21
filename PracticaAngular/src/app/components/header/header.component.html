@@ -1,4 +1,5 @@
 <nav
+  *ngIf="myToken"
   class="px-2 bg-gray-600 border-gray-600 dark:bg-gray-900 dark:border-gray-600"
 >
   <div class="container flex flex-wrap items-center justify-between mx-auto">
@@ -42,93 +43,88 @@
       id="navbar-dropdown"
     >
       <ul
+        *ngFor="let u of usuario"
         class="flex flex-col p-4 mt-4 border border-gray-600 rounded-lg bg-gray-600 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-600 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
         <!--Ambos roles-->
-        <div *ngIf="u.rol_id == 1 || u.rol_id == 2">
-          <li>
-            <a
-              routerLink="/chef"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Chef</a
-            >
-          </li>
 
-          <li>
-            <a
-              routerLink="/ingredientes"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Ingredientes</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/recetas"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Recetas</a
-            >
-          </li>
-          <li>
-            <a
-              href="/login"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Cerrar Sesion</a
-            >
-          </li>
-        </div>
-        <!--Solo para el rol de Administrador-->
-        <div *ngIf="u.rol_id == 1">
-          <li>
-            <a
-              routerLink="/monstruos"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Mounstruo</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/objeto"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Objeto</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/objeto"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Objeto</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/mapas"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Mapas</a
-            >
-          </li>
-
-        </div>
         <li>
           <a
-            href="login"
+            routerLink="/chef"
+            *ngIf="u.rol_id == 1 || u.rol_id == 2"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
             class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >Cerrar Sesion</a
+            >Chef</a
           >
         </li>
+
+        <li>
+          <a
+            *ngIf="u.rol_id == 1 || u.rol_id == 2"
+            routerLink="/ingredientes"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Ingredientes</a
+          >
+        </li>
+        <li>
+          <a
+            *ngIf="u.rol_id == 1 || u.rol_id == 2"
+            routerLink="/recetas"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Recetas</a
+          >
+        </li>
+        <li>
+          <a
+            *ngIf="u.rol_id == 1"
+            routerLink="/monstruos"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Mounstruo</a
+          >
+        </li>
+        <li>
+          <a
+            *ngIf="u.rol_id == 1"
+            routerLink="/objeto"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Objeto</a
+          >
+        </li>
+        <li>
+          <a
+            *ngIf="u.rol_id == 1"
+            routerLink="/objeto"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Objeto</a
+          >
+        </li>
+        <li>
+          <a
+            *ngIf="u.rol_id == 1"
+            routerLink="/mapas"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Mapas</a
+          >
+        </li>
+        <li *ngIf="u.rol_id == 1"></li>
+        <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+          <li>
+            <button type="submit" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cerrar Sesion</button>
+          </li>
+        </form>
       </ul>
     </div>
   </div>
