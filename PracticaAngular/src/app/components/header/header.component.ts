@@ -23,6 +23,7 @@ export class HeaderComponent {
   constructor(
     private loginService: LoginService,
     private http: HttpClient,
+    private router: Router,
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
@@ -33,7 +34,6 @@ export class HeaderComponent {
     this.myToken
     const token = this.myToken;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
     this.http.get<Usuario[]>(environment.URL_API + '/usuario/info', { headers }).subscribe(data => this.usuario = data);
 
   }
@@ -42,5 +42,6 @@ export class HeaderComponent {
   OnSubmit(values: Usuario) {
     this.loginService.logout(values).subscribe();
     this.form.reset();
+    this.router.navigate(['']);
   }
 }

@@ -65,6 +65,7 @@ export class ChefFormEditComponent implements OnInit{
     OnSubmit(values: Chef) {
     this.chefService.updateChef(values).subscribe();
     this.form.reset();
+
   }
   goBack(){
 
