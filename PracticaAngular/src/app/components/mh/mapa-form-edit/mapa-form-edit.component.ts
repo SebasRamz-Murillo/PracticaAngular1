@@ -17,7 +17,6 @@ export class MapaFormEditComponent implements OnInit{
   form: FormGroup;
   mapa2?: Mapa;
 
-
   suscription?:Subscription;
   id:number = 0;
   constructor(private route: ActivatedRoute,
