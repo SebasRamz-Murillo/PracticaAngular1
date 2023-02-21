@@ -90,7 +90,7 @@ import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-ed
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
