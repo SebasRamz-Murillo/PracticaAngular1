@@ -12,9 +12,10 @@ import { Mapa } from '../models/mapa.model';
 export class MapaService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
-  private obtenerMapas = this.APIURL+'/mapas/info';
+  private obtenerMapas = this.APIURL+'/mapas';
+  private obtenerMapa = this.APIURL+'/mapas/';
+
   private crearMapa = this.APIURL+'/mapas/insertar';
-  private obtenerMapa = this.APIURL+'/mapas/info/';
   private modificarMapa = this.APIURL+'/mapas/modificar/';
   private eliminarMapa = this.APIURL+'/mapas/eliminar/';
   constructor(private http: HttpClient) { }

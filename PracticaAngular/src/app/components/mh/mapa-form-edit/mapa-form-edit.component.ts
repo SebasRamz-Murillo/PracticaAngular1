@@ -26,10 +26,8 @@ export class MapaFormEditComponent implements OnInit{
     this.form = this.fb.group({
       id: ['', Validators.required],
       nombre: ['', Validators.required],
-      ap_paterno: ['', Validators.required],
-      ap_materno: ['', Validators.required],
-      nacionalidad: ['', Validators.required],
-      edad: ['', Validators.required]
+      descripcion: ['', Validators.required],
+      totalZonas: ['', Validators.required],
     })
   }
 
@@ -46,6 +44,7 @@ export class MapaFormEditComponent implements OnInit{
     this.suscription?.unsubscribe();
     console.log('Se destruyó el componente');
   }
+
   getOneMapa(id : number){
     this.mapaService.getOneMapa(id).subscribe((data: Mapa[]) => {
       this.mapa2 = data[0];

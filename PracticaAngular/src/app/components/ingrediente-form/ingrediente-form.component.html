@@ -11,11 +11,11 @@
         formControlName="nombre"
         id="nombre"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Abelardo"
+        placeholder="Nuez"
         required
       />
       <p
-        *ngIf="form.get('nombre')?.invalid"
+        *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched"
         class="text-red-500 text-xs italic"
       >
         El nombre es obligatorio
@@ -28,13 +28,17 @@
       <select id="tipo" formControlName="tipo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option selected>Aceites</option>
         <option value="Lacteos">Lacteos</option>
+        <option value="Cereales">Cereales</option>
         <option value="Legumbres">Legumbres</option>
         <option value="Setas/Hongos">Setas/Hongos</option>
         <option value="Verduras">Verduras</option>
+        <option value="Carnes rojas">Carnes rojas</option>
+        <option value="Carmes blancas">Carnes blancas</option>
+
       </select>
 
       <p
-        *ngIf="form.get('tipo')?.invalid"
+        *ngIf="form.get('tipo')!.invalid && form.get('tipo')!.touched"
         class="text-red-500 text-xs italic"
       >
         EL tipo es obligatorio
@@ -53,15 +57,14 @@
         id="edad"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="20"
-        max="100"
-        min="10"
+        min="1"
         required
       />
       <p
-        *ngIf="form.get('cantidad')?.invalid"
+        *ngIf="form.get('cantidad')!.invalid && form.get('cantidad')!.touched"
         class="text-red-500 text-xs italic"
       >
-        La cantidad es obligatoria y debe ser mayor a 10 y menor a 100
+        La cantidad es obligatoria y debe ser mayor a 1
       </p>
     </div>
     <div

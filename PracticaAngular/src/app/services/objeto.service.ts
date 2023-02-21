@@ -12,11 +12,11 @@ import { Objeto } from '../models/objeto.model';
 export class ObjetoService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
-  private obtenerObjetos = this.APIURL + '/objeto/info';
-  private crearObjeto = this.APIURL + '/objeto/crear';
-  private obtenerObjeto = this.APIURL + '/objeto/info/';
-  private modificarObjeto = this.APIURL + '/objeto/modificar/';
-  private eliminarObjeto = this.APIURL + '/objeto/eliminar/';
+  private obtenerObjetos = this.APIURL + '/objetos';
+  private crearObjeto = this.APIURL + '/objetos/crear/';
+  private obtenerObjeto = this.APIURL + '/objetos/';
+  private modificarObjeto = this.APIURL + '/objetos/modificar/';
+  private eliminarObjeto = this.APIURL + '/objetos/eliminar/';
   constructor(private http: HttpClient) { }
   get_refresh$() {
     return this._refresh$;

@@ -15,7 +15,7 @@
         required
       />
       <p
-        *ngIf="form.get('nombre')?.invalid"
+        *ngIf="form.get('nombre')?.invalid && form.get('nombre')!.touched"
         class="text-red-500 text-xs italic"
       >
         El nombre es obligatorio
@@ -92,13 +92,8 @@
         min="10"
         required
       />
-      <p
-        *ngIf="form.get('limiteBolsa')?.invalid"
-        class="text-red-500 text-xs italic"
-      >
-        El limite en bolsa en el objeto es obligatorio
-      </p>
-      <p *ngIf="form.get('limiteBolsa')?.invalid" class="text-red-500 text-xs italic">
+
+      <p *ngIf="form.get('limiteBolsa')!.invalid && form.get('limiteBolsa')!.touched" class="text-red-500 text-xs italic">
         El limite en bolsa del objeto es obligatorio
       </p>
       <p *ngIf="form.get('limiteBolsa')?.invalid && form.get('limiteBolsa')?.errors?.['min']" class="text-red-500 text-xs italic">
@@ -123,13 +118,8 @@
         min="10"
         required
       />
-      <p
-        *ngIf="form.get('valor')?.invalid"
-        class="text-red-500 text-xs italic"
-      >
-        El valor del objeto es obligatorio
-      </p>
-      <p *ngIf="form.get('valor')?.invalid" class="text-red-500 text-xs italic">
+
+      <p *ngIf="form.get('valor')?.invalid && form.get('valor')!.touched" class="text-red-500 text-xs italic">
         El valor del objeto es obligatorio
       </p>
       <p *ngIf="form.get('valor')?.invalid && form.get('valor')?.errors?.['min']" class="text-red-500 text-xs italic">

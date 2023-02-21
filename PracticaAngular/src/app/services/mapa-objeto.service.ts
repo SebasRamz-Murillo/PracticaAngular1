@@ -13,7 +13,7 @@ export class ObjetoService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
   private obtenerMapaObjetos = this.APIURL + '/mapaobjeto';
-  private crearMapaObjeto = this.APIURL + '/mapaobjeto/insertar';
+  private crearMapaObjeto = this.APIURL + '/mapaobjeto/insertar/';
   private modificarMapaObjeto = this.APIURL + '/mapaobjeto/modificar/';
   private eliminarMapaObjeto = this.APIURL + '/mapaobjeto/eliminar/';
   constructor(private http: HttpClient) { }

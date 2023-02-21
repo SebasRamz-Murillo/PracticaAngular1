@@ -63,10 +63,10 @@ const routes: Routes = [
   { path: 'objeto/edit/:id', component: ObjetoFormEditComponent},
   { path: 'objeto/delete/:id', component: ObjetoDeleteComponent},
 
-  { path: 'zonaObjeto', component: MapaObjetoComponent},
-  { path: 'zonaObjeto/create', component: ZonaObjetoFormComponent},
-  { path: 'zonaObjeto/edit/:id', component: ZonaObjetoFormEditComponent},
-  { path: 'zonaObjeto/delete/:id', component: ZonaDeleteComponent},
+  { path: 'zonaObjetos', component: MapaObjetoComponent},
+  { path: 'zonaObjetos/create', component: ZonaObjetoFormComponent},
+  { path: 'zonaObjetos/edit/:id', component: ZonaObjetoFormEditComponent},
+  { path: 'zonaObjetos/delete/:id', component: ZonaDeleteComponent},
 
 
   { path: 'usuarios', component: UsuarioComponent },
