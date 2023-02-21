@@ -30,7 +30,10 @@ import { MapaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.com
 import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
 import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
 import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
-
+import { MonstruosComponent } from './components/mh/monstrous/monstrous.component';
+import { MonstrousDeleteComponent } from './components/mh/monstrous-delete/monstrous-delete.component';
+import { MonstrousFormComponent } from './components/mh/monstrous-form/monstrous-form.component';
+import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/monstrous-form-edit.component';
 
 const routes: Routes = [
 
@@ -67,6 +70,11 @@ const routes: Routes = [
   { path: 'zonaObjetos/create', component: ZonaObjetoFormComponent},
   { path: 'zonaObjetos/edit/:id', component: ZonaObjetoFormEditComponent},
   { path: 'zonaObjetos/delete/:id', component: ZonaDeleteComponent},
+
+  { path: 'monstruos', component: MonstruosComponent},
+  { path: 'monstruos/create', component: MonstrousFormComponent},
+  { path: 'monstruos/edit/:id', component: MonstrousFormEditComponent},
+  { path: 'monstruos/delete/:id', component: MonstrousDeleteComponent},
 
 
   { path: 'usuarios', component: UsuarioComponent },

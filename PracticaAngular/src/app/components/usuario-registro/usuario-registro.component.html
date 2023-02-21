@@ -17,7 +17,7 @@
           required
         />
         <p
-          *ngIf="form.get('email')?.invalid"
+          *ngIf="form.get('email')!.invalid && form.get('email')!.touched"
           class="text-red-500 text-xs italic"
         >
           El Email es obligatorio
@@ -39,7 +39,7 @@
           required
         />
         <p
-          *ngIf="form.get('password')?.invalid"
+          *ngIf="form.get('password')!.invalid && form.get('password')!.touched"
           class="text-red-500 text-xs italic"
         >
           El Password es obligatorio
@@ -61,7 +61,7 @@
           required
         />
         <p
-          *ngIf="form.get('name')?.invalid"
+          *ngIf="form.get('name')!.invalid && form.get('name')!.touched"
           class="text-red-500 text-xs italic"
         >
           El nombre es obligatorio
@@ -83,7 +83,7 @@
           required
         />
         <p
-          *ngIf="form.get('ap_paterno')?.invalid"
+          *ngIf="form.get('ap_paterno')!.invalid && form.get('ap_paterno')!.touched"
           class="text-red-500 text-xs italic"
         >
           El nombre es obligatorio
@@ -101,11 +101,11 @@
           formControlName="ap_materno"
           id="ap_materno"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Sebastian"
+          placeholder="Murillo"
           required
         />
         <p
-          *ngIf="form.get('ap_materno')?.invalid"
+          *ngIf="form.get('ap_materno')!.invalid && form.get('ap_materno')!.touched"
           class="text-red-500 text-xs italic"
         >
           El Apelldo Materno es obligatorio
@@ -127,7 +127,7 @@
           required
         />
         <p
-          *ngIf="form.get('telefono')?.invalid"
+          *ngIf="form.get('telefono')!.invalid && form.get('telefono')!.touched"
           class="text-red-500 text-xs italic"
         >
           El telefono es obligatorio

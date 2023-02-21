@@ -1,4 +1,4 @@
-export interface Chef{
+export interface Monstruo{
   id?: number;
   tipo: string;
   especie: string;

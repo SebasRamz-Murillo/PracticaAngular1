@@ -41,7 +41,7 @@ import { MapaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.com
 import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
 import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
 import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
-import { MonstrousComponent } from './components/mh/monstrous/monstrous.component';
+import { MonstruosComponent } from './components/mh/monstrous/monstrous.component';
 import { MonstrousDeleteComponent } from './components/mh/monstrous-delete/monstrous-delete.component';
 import { MonstrousFormComponent } from './components/mh/monstrous-form/monstrous-form.component';
 import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/monstrous-form-edit.component';
@@ -85,7 +85,7 @@ import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/
     ZonaDeleteComponent,
     ZonaObjetoFormComponent,
     ZonaObjetoFormEditComponent,
-    MonstrousComponent,
+    MonstruosComponent,
     MonstrousDeleteComponent,
     MonstrousFormComponent,
     MonstrousFormEditComponent

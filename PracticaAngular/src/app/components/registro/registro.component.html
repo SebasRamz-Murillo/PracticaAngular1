@@ -34,7 +34,7 @@
             required
           />
           <p
-            *ngIf="form.get('nombre')?.invalid"
+            *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched"
             class="text-red-500 text-xs italic"
           >
             El nombre es obligatorio
@@ -56,7 +56,7 @@
             required
           />
           <p
-            *ngIf="form.get('ap_paterno')?.invalid"
+            *ngIf="form.get('ap_paterno')!.invalid && form.get('ap_paterno')!.touched"
             class="text-red-500 text-xs italic"
           >
             El nombre es obligatorio
