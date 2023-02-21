@@ -32,16 +32,19 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { MapaComponent } from './components/mh/mapa/mapa.component';
 import { MapaDeleteComponent } from './components/mh/mapa-delete/mapa-delete.component';
 import { MapaFormComponent } from './components/mh/mapa-form/mapa-form.component';
-import { MapaObjetoService } from './services/mapa-objeto.service';
 import { MapaFormEditComponent } from './components/mh/mapa-form-edit/mapa-form-edit.component';
 import { ObjetoComponent } from './components/mh/objeto/objeto.component';
 import { ObjetoDeleteComponent } from './components/mh/objeto-delete/objeto-delete.component';
 import { ObjetoFormComponent } from './components/mh/objeto-form/objeto-form.component';
 import { ObjetoFormEditComponent } from './components/mh/objeto-form-edit/objeto-form-edit.component';
-import { ZonaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.component';
+import { MapaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.component';
 import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
 import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
 import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
+import { MonstrousComponent } from './components/mh/monstrous/monstrous.component';
+import { MonstrousDeleteComponent } from './components/mh/monstrous-delete/monstrous-delete.component';
+import { MonstrousFormComponent } from './components/mh/monstrous-form/monstrous-form.component';
+import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/monstrous-form-edit.component';
 
 
 
@@ -78,10 +81,14 @@ import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-ed
     ObjetoDeleteComponent,
     ObjetoFormComponent,
     ObjetoFormEditComponent,
-    ZonaObjetoComponent,
+    MapaObjetoComponent,
     ZonaDeleteComponent,
     ZonaObjetoFormComponent,
-    ZonaObjetoFormEditComponent
+    ZonaObjetoFormEditComponent,
+    MonstrousComponent,
+    MonstrousDeleteComponent,
+    MonstrousFormComponent,
+    MonstrousFormEditComponent
   ],
   imports: [
     BrowserModule,

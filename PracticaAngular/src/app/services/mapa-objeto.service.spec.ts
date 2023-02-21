@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MapaObjetoService } from './mapa-objeto.service';
+import { ObjetoService } from './mapa-objeto.service';
 
 describe('MapaObjetoService', () => {
-  let service: MapaObjetoService;
+  let service: ObjetoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MapaObjetoService);
+    service = TestBed.inject(ObjetoService);
   });
 
   it('should be created', () => {
