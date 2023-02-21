@@ -20,49 +20,49 @@
         class="relative overflow-x-auto shadow-md"
         style="width: 100%; margin: auto"
       >
-        <table class="text-sm text-center text-gray-500 dark:text-gray-400">
-          <thead
-            class="text-xs text-white bg-green-700 dark:bg-gray-800 dark:text-gray-400"
-          >
-            <tr>
-              <th scope="col" class="px-1 py-1">ID</th>
-              <th scope="col" class="px-4 py-1">Nombre</th>
-              <th scope="col" class="px-5 py-1">Apellido Paterno</th>
-              <th scope="col" class="px-5 py-1">Apellido Materno</th>
-              <th scope="col" class="px-7 py-1">Nacionalidad</th>
-              <th scope="col" class="px-3 py-1">Edad</th>
-              <th scope="col" class="px-6 py-1">Editar</th>
-              <th scope="col" class="px-6 py-1">Eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-white dark:bg-gray-800" *ngFor="let c of chefs">
-              <td class="px-1 py-2">{{ c.id }}</td>
-              <td class="px-6 py-2">{{ c.nombre }}</td>
-              <td class="px-7 py-2">{{ c.ap_paterno }}</td>
-              <td class="px-7 py-2">{{ c.ap_materno }}</td>
-              <td class="px-7 py-2">{{ c.nacionalidad }}</td>
-              <td class="px-6 py-2">{{ c.edad }}</td>
-              <td class="px-6 py-2">
-                <a
-                  routerLink="edit/{{ c.id }}"
-                  routerLinkActive="active"
-                  ariaCurrentWhenActive="page"
-                  >Edit</a
-                >
-              </td>
-              <td class="px-6 py-2">
-                <a
-                  routerLink="delete/{{ c.id }}}"
-                  routerLinkActive="active"
-                  ariaCurrentWhenActive="page"
-                  >Delete</a
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="text-sm text-center text-gray-500 dark:text-gray-400">
+        <thead
+          class="text-xs text-white bg-green-700 dark:bg-gray-800 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-1 py-1">ID</th>
+            <th scope="col" class="px-4 py-1">Nombre</th>
+            <th scope="col" class="px-5 py-1">Apellido Paterno</th>
+            <th scope="col" class="px-5 py-1">Apellido Materno</th>
+            <th scope="col" class="px-7 py-1">Nacionalidad</th>
+            <th scope="col" class="px-3 py-1">Edad</th>
+            <th scope="col" class="px-6 py-1">Editar</th>
+            <th scope="col" class="px-6 py-1">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white dark:bg-gray-800" *ngFor="let c of chefs">
+            <td class="px-1 py-2">{{ c.id }}</td>
+            <td class="px-6 py-2">{{ c.nombre }}</td>
+            <td class="px-7 py-2">{{ c.ap_paterno }}</td>
+            <td class="px-7 py-2">{{ c.ap_materno }}</td>
+            <td class="px-7 py-2">{{ c.nacionalidad }}</td>
+            <td class="px-6 py-2">{{ c.edad }}</td>
+            <td class="px-6 py-2">
+              <a
+                routerLink="edit/{{ c.id }}"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Edit</a
+              >
+            </td>
+            <td class="px-6 py-2">
+              <a
+                routerLink="delete/{{ c.id }}}"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@
         required
       />
       <p
-        *ngIf="form.get('nombre')?.invalid"
+        *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched"
         class="text-red-500 text-xs italic"
       >
         El nombre es obligatorio
@@ -36,7 +36,7 @@
         required
       />
       <p
-        *ngIf="form.get('descripcion')?.invalid"
+        *ngIf="form.get('descripcion')!.invalid && form.get('descripcion')!.touched!"
         class="text-red-500 text-xs italic"
       >
         La descripcion es obligatoria
@@ -59,7 +59,7 @@
         required
       />
       <p
-        *ngIf="form.get('totalZonas')?.invalid"
+        *ngIf="form.get('totalZonas')!.invalid && form.get('edad')!.touched"
         class="text-red-500 text-xs italic"
       >
         El total de las zonas en el mapa es obligatorio

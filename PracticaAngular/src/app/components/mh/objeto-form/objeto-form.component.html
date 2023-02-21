@@ -58,24 +58,18 @@
         id="rareza"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="4"
-        max="100"
-        min="10"
+        max="10"
+        min="1"
         required
       />
-      <p
-        *ngIf="form.get('rareza')?.invalid"
-        class="text-red-500 text-xs italic"
-      >
-        La en el objeto es obligatorio
-      </p>
-      <p *ngIf="form.get('rareza')?.invalid" class="text-red-500 text-xs italic">
+
+      <p *ngIf="form.get('rareza')!.invalid && form.get('rareza')!.touched" class="text-red-500 text-xs italic">
         La rareza en el objeto es obligatorio
       </p>
-      <p *ngIf="form.get('rareza')?.invalid && form.get('rareza')?.errors?.['min']" class="text-red-500 text-xs italic">
+      <p *ngIf="form.get('rareza')?.errors?.['min']" class="text-red-500 text-xs italic">
         El valor debe ser mayor o igual a 1
       </p>
-
-      <p *ngIf="form.get('rareza')?.invalid && form.get('rareza')?.errors?.['max']" class="text-red-500 text-xs italic">
+      <p *ngIf="form.get('rareza')?.errors?.['max']" class="text-red-500 text-xs italic">
         El valor debe ser menor o igual a 10
       </p>
 
