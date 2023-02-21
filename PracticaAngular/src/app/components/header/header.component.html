@@ -8,9 +8,10 @@
         class="h-6 mr-3 sm:h-10"
         alt="Flowbite Logo"
       />
-      <span *ngFor="let u of usuario"
+      <span
+        *ngFor="let u of usuario"
         class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-        >Bienvenido! {{u.name}}</span
+        >Bienvenido! {{ u.name }}</span
       >
     </a>
     <button
@@ -35,20 +36,95 @@
         ></path>
       </svg>
     </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+    <div
+      *ngFor="let u of usuario"
+      class="hidden w-full md:block md:w-auto"
+      id="navbar-dropdown"
+    >
       <ul
         class="flex flex-col p-4 mt-4 border border-gray-600 rounded-lg bg-gray-600 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-600 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
-      <li>
-        <a
-          routerLink="/chef" routerLinkActive="active" ariaCurrentWhenActive="page"
-          class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-          >Home</a
-        >
-      </li>
+        <!--Ambos roles-->
+        <div *ngIf="u.rol_id == 1 || u.rol_id == 2">
+          <li>
+            <a
+              routerLink="/chef"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Chef</a
+            >
+          </li>
+
+          <li>
+            <a
+              routerLink="/ingredientes"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Ingredientes</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/recetas"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Recetas</a
+            >
+          </li>
+          <li>
+            <a
+              href="/login"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Cerrar Sesion</a
+            >
+          </li>
+        </div>
+        <!--Solo para el rol de Administrador-->
+        <div *ngIf="u.rol_id == 1">
+          <li>
+            <a
+              routerLink="/monstruos"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Mounstruo</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/objeto"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Objeto</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/objeto"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Objeto</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/mapas"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Mapas</a
+            >
+          </li>
+
+        </div>
         <li>
           <a
-            href="#"
+            href="login"
             class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Cerrar Sesion</a
           >
