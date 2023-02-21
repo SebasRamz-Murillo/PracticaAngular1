@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./chef.component.css']
 })
 
-export class ChefComponent implements OnInit, OnDestroy {
+export class ChefComponent implements OnInit {
   chefs: Chef[] = [];
   suscription?: Subscription;
 
@@ -27,10 +27,7 @@ export class ChefComponent implements OnInit, OnDestroy {
     }
     );
   }
-  ngOnDestroy(): void {
-    this.suscription?.unsubscribe();
-    console.log('Se destruyó el componente');
-  }
+
   getChefs() {
     this.chefService.getChefs().subscribe(data => this.chefs = data);
   }

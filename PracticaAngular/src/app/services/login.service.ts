@@ -4,7 +4,7 @@ import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
-import { Usuario } from '../Models/usuario.model';
+import { Usuario } from '../models/usuario.model';
 
 import { environment } from '../../environments/environment';
 
@@ -41,12 +41,7 @@ export class LoginService {
   }
   //Peticiones para logearse
   login(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<{ token: string }>(this.logearUsuario, usuario).pipe(
-      map(response => {
-        this.token = response.token;
-        return usuario;
-      })
-    );
+    return this.http.post<Usuario>(this.logearUsuario, usuario).pipe(catchError(this.handleError));
   }
   getHeaders() {
     return { Authorization: `Bearer ${this.token}` };

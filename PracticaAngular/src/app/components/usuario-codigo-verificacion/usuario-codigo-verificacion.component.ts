@@ -4,7 +4,7 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Route, ParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
-import { Usuario } from 'src/app/Models/usuario.model';
+import { Usuario } from 'src/app/models/usuario.model';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';

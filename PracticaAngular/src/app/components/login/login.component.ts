@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/Models/usuario.model';
+import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -16,9 +16,7 @@ export class LoginComponent {
   form: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private db: FormBuilder,
     private loginService: LoginService,
-    private location: Location,
     private router: Router) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -26,8 +24,10 @@ export class LoginComponent {
     });
   }
   OnSubmit(values: Usuario) {
-    this.loginService.login(values).subscribe();
+    this.loginService.login(values).subscribe((response: Usuario) => {
+      localStorage.setItem('token', response.token);
+      this.router.navigate(['/chef']);
+    });
     this.form.reset();
-    this.router.navigate(['/chef']);
   }
 }
