@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
@@ -55,9 +54,6 @@ export class LoginService {
     ));
   }
   //Crud de Usuarios
-  obtenerDatosToken(encabezados?: HttpHeaders): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.infoUsuario, { headers: encabezados });
-  }
   getInfoUsuario(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.infoUsuario).pipe(retry(3), catchError(this.handleError))
   }

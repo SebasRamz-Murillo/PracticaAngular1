@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Chef } from 'src/app/Models/chef.model';
+import { Chef } from 'src/app/models/chef.model';
 import { ChefService } from 'src/app/services/chef.service';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
