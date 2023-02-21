@@ -13,7 +13,6 @@ import { environment } from '../../environments/environment';
 })
 export class LoginService {
   APIURL = environment.URL_API + "/usuario"
-  token?: string;
   private _refresh$ = new Subject<void>();
   private crearUsuario = this.APIURL + '/crear'
   private obtenerRutaSigned = this.APIURL + '/codigo'
@@ -26,6 +25,7 @@ export class LoginService {
 
 
   constructor(private http: HttpClient) { }
+  token: string = '';
   get_refresh$() {
     return this._refresh$;
   }
@@ -41,7 +41,12 @@ export class LoginService {
   }
   //Peticiones para logearse
   login(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.logearUsuario, usuario).pipe(catchError(this.handleError));
+    return this.http.post<{ token: string }>(this.logearUsuario, usuario).pipe(
+      map(response => {
+        this.token = response.token;
+        return usuario;
+      })
+    );
   }
   getHeaders() {
     return { Authorization: `Bearer ${this.token}` };
