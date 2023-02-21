@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
-export class MapaComponent implements OnInit, OnDestroy {
+export class MapaComponent implements OnInit {
   mapas: Mapa[] = [];
   suscription?:Subscription;
 
@@ -21,10 +21,7 @@ export class MapaComponent implements OnInit, OnDestroy {
     }
     );
   }
-  ngOnDestroy():void {
-    this.suscription?.unsubscribe();
-    console.log('Se destruyó el componente');
-  }
+
   getMapas() {
     this.mapaService.getMapas().subscribe(data => this.mapas = data);
   }
