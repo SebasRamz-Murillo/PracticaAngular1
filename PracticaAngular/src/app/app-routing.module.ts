@@ -26,7 +26,7 @@ import { ObjetoComponent } from './components/mh/objeto/objeto.component';
 import { ObjetoFormComponent } from './components/mh/objeto-form/objeto-form.component';
 import { ObjetoFormEditComponent } from './components/mh/objeto-form-edit/objeto-form-edit.component';
 import { ObjetoDeleteComponent } from './components/mh/objeto-delete/objeto-delete.component';
-import { ZonaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.component';
+import { MapaObjetoComponent } from './components/mh/zona-objeto/zona-objeto.component';
 import { ZonaObjetoFormComponent } from './components/mh/zona-objeto-form/zona-objeto-form.component';
 import { ZonaObjetoFormEditComponent } from './components/mh/zona-objeto-form-edit/zona-objeto-form-edit.component';
 import { ZonaDeleteComponent } from './components/mh/zona-delete/zona-delete.component';
@@ -63,7 +63,7 @@ const routes: Routes = [
   { path: 'objeto/edit/:id', component: ObjetoFormEditComponent},
   { path: 'objeto/delete/:id', component: ObjetoDeleteComponent},
 
-  { path: 'zonaObjeto', component: ZonaObjetoComponent},
+  { path: 'zonaObjeto', component: MapaObjetoComponent},
   { path: 'zonaObjeto/create', component: ZonaObjetoFormComponent},
   { path: 'zonaObjeto/edit/:id', component: ZonaObjetoFormEditComponent},
   { path: 'zonaObjeto/delete/:id', component: ZonaDeleteComponent},

@@ -15,7 +15,7 @@
         required
       />
       <p
-        *ngIf="form.get('nombre')?.invalid"
+        *ngIf="form.get('nombre')?.invalid && form.get('nombre')!.touched"
         class="text-red-500 text-xs italic"
       >
         El nombre es obligatorio
@@ -36,10 +36,10 @@
         required
       />
       <p
-        *ngIf="form.get('ap_paterno')?.invalid"
+        *ngIf="form.get('ap_paterno')!.invalid && form.get('ap_paterno')!.touched"
         class="text-red-500 text-xs italic"
       >
-        El Apellido Paterno es obligatorio
+        El Apellido Maternoes obligatorio
       </p>
     </div>
     <div class="mb-6" style="width: 50%; margin: auto">
@@ -57,7 +57,7 @@
         required
       />
       <p
-        *ngIf="form.get('ap_materno')?.invalid"
+        *ngIf="form.get('ap_materno')!.invalid && form.get('ap_materno')!.touched"
         class="text-red-500 text-xs italic"
       >
         El Apellido Maternoes obligatorio
@@ -75,7 +75,7 @@
       </select>
 
       <p
-        *ngIf="form.get('nacionalidad')?.invalid"
+        *ngIf="form.get('nacionalidad')!.invalid && form.get('nacionalidad')!.touched"
         class="text-red-500 text-xs italic"
       >
         La nacionalidad es obligatorio
@@ -99,7 +99,7 @@
         required
       />
       <p
-        *ngIf="form.get('edad')?.invalid"
+        *ngIf="form.get('edad')!.invalid && form.get('edad')!.touched"
         class="text-red-500 text-xs italic"
       >
         La edad es obligatoria y debe ser mayor a 10 y menor a 100
