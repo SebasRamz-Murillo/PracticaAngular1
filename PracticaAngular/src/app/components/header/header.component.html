@@ -8,9 +8,9 @@
         class="h-6 mr-3 sm:h-10"
         alt="Flowbite Logo"
       />
-      <span
+      <span *ngFor="let u of usuario"
         class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-        >Bienvenido!</span
+        >Bienvenido! {{u.name}}</span
       >
     </a>
     <button
