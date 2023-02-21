@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 
@@ -43,9 +43,6 @@ export class LoginService {
   login(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.logearUsuario, usuario).pipe(catchError(this.handleError));
   }
-  getHeaders() {
-    return { Authorization: `Bearer ${this.token}` };
-  }
 
   logout(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.logoutUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
@@ -54,9 +51,25 @@ export class LoginService {
     ));
   }
   //Crud de Usuarios
-  getInfoUsuario(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.infoUsuario).pipe(retry(3), catchError(this.handleError))
+  myToken = localStorage.getItem('token');
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.myToken}`
+    })
+  };
+  getInfoUsuario(Token: any): Observable<Usuario[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${Token.token}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
+    return this.http.get<Usuario[]>(this.infoUsuario, httpOptions);
   }
+
 
   registrarUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.crearUsuario, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
