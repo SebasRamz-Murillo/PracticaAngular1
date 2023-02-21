@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ObjetoService } from 'src/app/services/objeto.service';
-import { Objeto } from 'src/app/Models/objeto.model';
+import { Objeto } from 'src/app/models/objeto.model';
 import { Location } from '@angular/common';
 
 

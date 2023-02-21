@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Objeto } from 'src/app/Models/objeto.model';
+import { Objeto } from 'src/app/models/objeto.model';
 import { ObjetoService } from 'src/app/services/objeto.service';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';

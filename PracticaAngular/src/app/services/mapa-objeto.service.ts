@@ -4,7 +4,7 @@ import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { MapaObjeto } from '../Models/mapaObjeto.model';
+import { MapaObjeto } from '../models/mapaObjeto.model';
 
 @Injectable({
   providedIn: 'root'

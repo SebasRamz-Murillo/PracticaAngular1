@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MapaService } from 'src/app/services/mapa.service';
-import { Mapa } from 'src/app/Models/mapa.model';
+import { Mapa } from 'src/app/models/mapa.model';
 import { Location } from '@angular/common';
 
 

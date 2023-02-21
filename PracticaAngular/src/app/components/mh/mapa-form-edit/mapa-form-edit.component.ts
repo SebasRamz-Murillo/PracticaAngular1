@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Route, ParamMap } from '@angular/router';
-import { Mapa } from 'src/app/Models/mapa.model';
+import { Mapa } from 'src/app/models/mapa.model';
 import { MapaService } from 'src/app/services/mapa.service';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Injectable } from '@angular/core';
