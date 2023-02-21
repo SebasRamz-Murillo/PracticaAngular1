@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Chef } from 'src/app/models/chef.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { OnInit,OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
@@ -11,4 +10,5 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent {
   constructor(){}
+  myData = localStorage.getItem('token');
 }

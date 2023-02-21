@@ -15,6 +15,7 @@ import { Injectable } from '@angular/core';
 export class ChefComponent implements OnInit, OnDestroy {
   chefs: Chef[] = [];
   suscription?: Subscription;
+  token?: string;
 
 
   constructor(private chefService: ChefService) { }
@@ -23,7 +24,6 @@ export class ChefComponent implements OnInit, OnDestroy {
     this.getChefs();
     this.suscription = this.chefService.get_refresh$().subscribe(() => {
       this.getChefs();
-
     }
     );
   }
