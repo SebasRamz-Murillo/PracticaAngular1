@@ -1,3 +1,4 @@
+
 <nav
   *ngIf="myToken"
   class="px-2 bg-gray-600 border-gray-600 dark:bg-gray-900 dark:border-gray-600"
@@ -10,9 +11,9 @@
         alt="Flowbite Logo"
       />
       <span
-        *ngFor="let u of usuario"
-        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-        >Bienvenido! {{ u.name }}</span
+
+        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-white"
+        >Bienvenido! {{usuario?.name}}</span
       >
     </a>
     <button
@@ -38,20 +39,20 @@
       </svg>
     </button>
     <div
-      *ngFor="let u of usuario"
+
       class="hidden w-full md:block md:w-auto"
       id="navbar-dropdown"
     >
       <ul
-        *ngFor="let u of usuario"
+
         class="flex flex-col p-4 mt-4 border border-gray-600 rounded-lg bg-gray-600 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-600 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
         <!--Ambos roles-->
 
-        <li>
+        <li *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3">
           <a
             routerLink="/chef"
-            *ngIf="u.rol_id == 1 || u.rol_id == 2"
+
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
             class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -59,9 +60,9 @@
           >
         </li>
 
-        <li>
+        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3">
           <a
-            *ngIf="u.rol_id == 1 || u.rol_id == 2"
+
             routerLink="/ingredientes"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -69,9 +70,9 @@
             >Ingredientes</a
           >
         </li>
-        <li>
+        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3">
           <a
-            *ngIf="u.rol_id == 1 || u.rol_id == 2"
+
             routerLink="/recetas"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -80,9 +81,9 @@
           >
         </li>
 
-        <li>
+        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3">
           <a
-            *ngIf="u.rol_id == 1"
+
             routerLink="/objeto"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -91,9 +92,9 @@
           >
         </li>
 
-        <li>
+        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3">
           <a
-            *ngIf="u.rol_id == 1"
+
             routerLink="/mapas"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -101,9 +102,9 @@
             >Mapas</a
           >
         </li>
-        <li>
+        <li  *ngIf="usuario?.rol_id == 1">
           <a
-            *ngIf="u.rol_id == 1"
+
             routerLink="/usuarios"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -111,7 +112,7 @@
             >Usuarios</a
           >
         </li>
-        <li *ngIf="u.rol_id == 1"></li>
+        <li ></li>
         <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
           <input type="text" hidden="true" formControlName="token" value="{{myToken}}">
           <li>

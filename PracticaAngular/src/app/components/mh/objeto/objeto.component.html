@@ -29,6 +29,8 @@
               <th scope="col" class="px-5 py-1">Rareza</th>
               <th scope="col" class="px-5 py-1">Valor</th>
               <th scope="col" class="px-5 py-1">Limite en Bolsa</th>
+              <th *ngIf="usuario?.rol_id == 1" scope="col" class="px-4 py-1">Editar</th>
+              <th *ngIf="usuario?.rol_id == 1" scope="col" class="px-4 py-1">Eliminar</th>
 
             </tr>
           </thead>
@@ -42,7 +44,7 @@
               <td class="px-7 py-2">{{ o.limiteBolsa }}</td>
 
 
-              <td class="px-6 py-2">
+              <td *ngIf="usuario?.rol_id == 1" class="px-6 py-2">
                 <a
                   routerLink="edit/{{ o.id }}"
                   routerLinkActive="active"
@@ -50,7 +52,7 @@
                   >Edit</a
                 >
               </td>
-              <td class="px-6 py-2">
+              <td *ngIf="usuario?.rol_id == 1" class="px-6 py-2">
                 <a
                   routerLink="delete/{{ o.id }}}"
                   routerLinkActive="active"

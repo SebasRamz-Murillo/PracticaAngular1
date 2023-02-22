@@ -24,6 +24,7 @@ export class MapaService {
     return this._refresh$;
   }
   mytoken = localStorage.getItem('token');
+
   getMapas(): Observable<Mapa[]> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.mytoken}`

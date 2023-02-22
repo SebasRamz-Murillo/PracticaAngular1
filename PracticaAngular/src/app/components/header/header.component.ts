@@ -17,7 +17,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HeaderComponent {
   form: FormGroup;
-  usuario: Usuario[] = [];
+  usuario?: Usuario;
+
   suscription?: Subscription;
   myToken = localStorage.getItem('token') || '';
   constructor(
@@ -34,7 +35,7 @@ export class HeaderComponent {
     this.myToken
     const token = this.myToken;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    this.http.get<Usuario[]>(environment.URL_API + '/usuario/info', { headers }).subscribe(data => this.usuario = data);
+    this.http.get<Usuario>(environment.URL_API + '/usuario/infoObjeto', { headers }).subscribe(data => this.usuario = data);
 
   }
 

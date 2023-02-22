@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
 
 export class ChefComponent implements OnInit {
   chefs: Chef[] = [];
-  usuario: Usuario[] = [];
+  usuario?: Usuario;
   suscription?: Subscription;
   myToken = localStorage.getItem('token') || '';
 
@@ -31,7 +31,7 @@ export class ChefComponent implements OnInit {
     const token = this.myToken;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get<Usuario[]>(environment.URL_API+'/usuario/info', { headers }).subscribe(data => this.usuario = data);
+    this.http.get<Usuario>(environment.URL_API+'/usuario/infoObjeto', { headers }).subscribe(data => this.usuario = data);
     this.getChefs();
     this.suscription = this.chefService.get_refresh$().subscribe(() => {
       this.getChefs();

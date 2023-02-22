@@ -26,8 +26,8 @@
               <th scope="col" class="px-4 py-1">Nombre</th>
               <th scope="col" class="px-5 py-1">Descripcion</th>
               <th scope="col" class="px-5 py-1">Zonas</th>
-
-
+              <th *ngIf="usuario?.rol_id == 1" scope="col" class="px-4 py-1">Editar</th>
+              <th *ngIf="usuario?.rol_id == 1" scope="col" class="px-4 py-1">Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -36,7 +36,7 @@
               <td class="px-6 py-2">{{ m.nombre }}</td>
               <td class="px-7 py-2">{{ m.descripcion }}</td>
               <td class="px-7 py-2">{{ m.totalZonas }}</td>
-              <td class="px-6 py-2">
+              <td *ngIf="usuario?.rol_id == 1" class="px-6 py-2">
                 <a
                   routerLink="edit/{{ m.id }}"
                   routerLinkActive="active"
@@ -44,7 +44,7 @@
                   >Edit</a
                 >
               </td>
-              <td class="px-6 py-2">
+              <td *ngIf="usuario?.rol_id == 1"  class="px-6 py-2">
                 <a
                   routerLink="delete/{{ m.id }}}"
                   routerLinkActive="active"
