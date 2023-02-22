@@ -45,6 +45,7 @@ import { MonstruosComponent } from './components/mh/monstrous/monstrous.componen
 import { MonstrousDeleteComponent } from './components/mh/monstrous-delete/monstrous-delete.component';
 import { MonstrousFormComponent } from './components/mh/monstrous-form/monstrous-form.component';
 import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/monstrous-form-edit.component';
+import { PermisosComponent } from './components/permisos/permisos.component';
 
 
 
@@ -88,7 +89,8 @@ import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/
     MonstruosComponent,
     MonstrousDeleteComponent,
     MonstrousFormComponent,
-    MonstrousFormEditComponent
+    MonstrousFormEditComponent,
+    PermisosComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Monstruo } from '../models/monstruo.model';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -21,25 +22,70 @@ export class MonstruoService {
   get_refresh$() {
     return this._refresh$;
   }
+  mytoken = localStorage.getItem('token');
   getIMonstruo(): Observable<Monstruo[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Monstruo[]>(this.obtenerMonstruos).pipe(retry(3), catchError(this.handleError))
   }
+
   addMonstruo(monstruo: Monstruo): Observable<Monstruo> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.post<Monstruo>(this.crearMonstruo, monstruo).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   getOneMonstruo(id: number): Observable<Monstruo[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Monstruo[]>(this.obtenerMonstruo + id).pipe(retry(3), catchError(this.handleError))
   }
+
   updateMonstruo(monstruo: Monstruo): Observable<Monstruo> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.put<Monstruo>(this.modificarMonstruo + monstruo.id, monstruo).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   deleteMonstruo(monstruo: Monstruo): Observable<Monstruo[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.delete<Monstruo[]>(this.eliminarMonstruo + monstruo.id).pipe(retry(3), catchError(this.handleError))
   }
   private handleError(error: HttpErrorResponse) {

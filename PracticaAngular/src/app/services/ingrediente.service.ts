@@ -5,6 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Ingrediente } from '../models/ingrediente.model';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,25 +23,69 @@ export class IngredienteService {
   get_refresh$() {
     return this._refresh$;
   }
+  mytoken = localStorage.getItem('token');
   getIngredientes(): Observable<Ingrediente[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Ingrediente[]>(this.obtenerIngredientes).pipe(retry(3), catchError(this.handleError))
   }
+
   addIngrendiente(ingrediente: Ingrediente): Observable<Ingrediente> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.post<Ingrediente>(this.crearIngrediente, ingrediente).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
   getOneIngrediente(id:number): Observable<Ingrediente[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Ingrediente[]>(this.obtenerIngrediente+id).pipe(retry(3), catchError(this.handleError))
   }
+
   updateIngrediente(ingrediente: Ingrediente): Observable<Ingrediente> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.put<Ingrediente>(this.modificarIngrediente+ ingrediente.id, ingrediente).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   deleteIngrediente(ingrediente:Ingrediente): Observable<Ingrediente[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.delete<Ingrediente[]>(this.eliminarIngrediente + ingrediente.id).pipe(retry(3), catchError(this.handleError))
   }
   private handleError(error: HttpErrorResponse) {

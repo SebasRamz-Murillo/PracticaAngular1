@@ -5,6 +5,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Mapa } from '../models/mapa.model';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,25 +23,70 @@ export class MapaService {
   get_refresh$() {
     return this._refresh$;
   }
+  mytoken = localStorage.getItem('token');
   getMapas(): Observable<Mapa[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Mapa[]>(this.obtenerMapas).pipe(retry(3), catchError(this.handleError))
   }
+
   addMapa(mapa: Mapa): Observable<Mapa> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.post<Mapa>(this.crearMapa, mapa).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   getOneMapa(id:number): Observable<Mapa[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Mapa[]>(this.obtenerMapa+id).pipe(retry(3), catchError(this.handleError))
   }
+
   updateMapa(mapa: Mapa): Observable<Mapa> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.put<Mapa>(this.modificarMapa+ mapa.id, mapa).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   deleteMapa(mapa:Mapa): Observable<Mapa[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.delete<Mapa[]>(this.eliminarMapa + mapa.id).pipe(retry(3), catchError(this.handleError))
   }
   private handleError(error: HttpErrorResponse) {

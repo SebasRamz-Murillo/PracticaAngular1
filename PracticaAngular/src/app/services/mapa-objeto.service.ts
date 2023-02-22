@@ -5,6 +5,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { MapaObjeto } from '../models/mapaObjeto.model';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +21,58 @@ export class ObjetoService {
   get_refresh$() {
     return this._refresh$;
   }
+  mytoken = localStorage.getItem('token');
   getIObjeto(): Observable<MapaObjeto[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<MapaObjeto[]>(this.obtenerMapaObjetos).pipe(retry(3), catchError(this.handleError))
   }
+
   addObjeto(objeto: MapaObjeto): Observable<MapaObjeto> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.post<MapaObjeto>(this.crearMapaObjeto, objeto).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   updateObjeto(objeto: MapaObjeto): Observable<MapaObjeto> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.put<MapaObjeto>(this.modificarMapaObjeto + objeto.id, objeto).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   deleteObjeto(objeto: MapaObjeto): Observable<MapaObjeto[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.delete<MapaObjeto[]>(this.eliminarMapaObjeto + objeto.id).pipe(retry(3), catchError(this.handleError))
   }
   private handleError(error: HttpErrorResponse) {
