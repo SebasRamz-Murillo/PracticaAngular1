@@ -89,6 +89,9 @@ const routes: Routes = [
 
 
   { path: 'usuarios', component: UsuarioComponent },
+  { path: 'usuarios/edit/:id', component: UsuarioComponent },
+  { path: 'usuarios/editRole/:id', component: UsuarioComponent },
+
   { path: '**', component: PageNoFoundComponent }
 ];
 

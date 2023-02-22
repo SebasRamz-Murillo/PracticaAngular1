@@ -39,7 +39,31 @@ export class UsuarioComponent implements OnInit {
   }
 
   getUsuarios() {
-    this.usuarioService.getUsuarios().subscribe(data => this.usuarios = data);
+    this.usuarioService.getUsuarios().subscribe(data => {
+      this.usuarios = data.map(usuario => {
+        const estado = this.obtenerEstado(usuario.activo);
+        const role = this.obtenerRole(usuario.rol_id);
+
+        return {...usuario, estado,role};
+      });
+    });
+  }
+
+  obtenerEstado(activo: boolean): string {
+    return activo ? 'Activo' : 'Inactivo';
+  }
+  obtenerRole(rol_id: number): string {
+    switch (rol_id) {
+      case 1:
+        return 'Administrador';
+      case 2:
+        return 'Usuario';
+      case 3:
+        return 'Invitado';
+      default:
+        return 'Invitado';
+    }
+    //return rol_id ? 'Activo' : 'Inactivo';
   }
 
 }

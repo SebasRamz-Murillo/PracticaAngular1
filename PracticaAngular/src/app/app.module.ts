@@ -48,6 +48,8 @@ import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/
 import { PermisosComponent } from './components/permisos/permisos.component';
 import { PermisosSesionExpiradaComponent } from './components/permisos-sesion-expirada/permisos-sesion-expirada.component';
 import { PermisosCuentaDesactivadaComponent } from './components/permisos-cuenta-desactivada/permisos-cuenta-desactivada.component';
+import { UsuarioEditComponent } from './components/usuario-edit/usuario-edit.component';
+import { UsuarioEditRoleComponent } from './components/usuario-edit-role/usuario-edit-role.component';
 
 
 
@@ -94,7 +96,9 @@ import { PermisosCuentaDesactivadaComponent } from './components/permisos-cuenta
     MonstrousFormEditComponent,
     PermisosComponent,
     PermisosSesionExpiradaComponent,
-    PermisosCuentaDesactivadaComponent
+    PermisosCuentaDesactivadaComponent,
+    UsuarioEditComponent,
+    UsuarioEditRoleComponent
   ],
   imports: [
     BrowserModule,

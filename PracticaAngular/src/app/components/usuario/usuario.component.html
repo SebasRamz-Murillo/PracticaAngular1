@@ -4,7 +4,7 @@
     <div class="col-span-1" style="width: min-content;">
 
     </div>
-    <div class="col-start-2 col-end-5 items-end">
+    <div class="col-start-1 col-end-8 items-end justify-center">
       <div class="pt-5 pb-5" style="margin: auto; width: 100%">
         <h1 class="text-2xl font-bold text-gray-700 dark:text-gray-200">
           Usuarios
@@ -32,6 +32,8 @@
             <th scope="col" class="px-7 py-1">Estatus</th>
 
             <th scope="col" class="px-6 py-1">Editar</th>
+            <th scope="col" class="px-8 py-1">Editar Rol</th>
+
             <th scope="col" class="px-6 py-1">Eliminar</th>
           </tr>
         </thead>
@@ -43,8 +45,8 @@
             <td class="px-7 py-2">{{ c.ap_materno }}</td>
             <td class="px-7 py-2">{{ c.telefono }}</td>
             <td class="px-6 py-2">{{ c.email }}</td>
-            <td class="px-6 py-2">{{ c.rol_id }}</td>
-            <td class="px-6 py-2">{{ c.activo }}</td>
+            <td class="px-6 py-2">{{ c.role }}</td>
+            <td class="px-6 py-2">{{ c.estado }}</td>
 
             <td class="px-6 py-2">
               <a
@@ -52,6 +54,14 @@
                 routerLinkActive="active"
                 ariaCurrentWhenActive="page"
                 >Edit</a
+              >
+            </td>
+            <td class="px-8 py-2">
+              <a
+                routerLink="editRole/{{ c.id }}"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Edit Rol</a
               >
             </td>
             <td class="px-6 py-2">

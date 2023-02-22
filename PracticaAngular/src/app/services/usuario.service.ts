@@ -13,10 +13,12 @@ import { environment } from '../../environments/environment';
 export class UsuarioService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
-  private obtenerUsuarios = this.APIURL+'/usuario/info';
+  private obtenerUsuarios = this.APIURL+'/usuario';
   private crearUsuario = this.APIURL+'/usuario/';
   private obtenerUsuario = this.APIURL+'/usuario/info/';
   private modificarUsuario = this.APIURL+'/usuario/update/'
+  private modificarUsuarioRole = this.APIURL+'/usuario/updateRole/'
+
   private eliminarUsuario = this.APIURL+'/usuario/delete/'
 
   constructor(private http: HttpClient) { }
@@ -24,6 +26,10 @@ export class UsuarioService {
     return this._refresh$;
   }
   getUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.obtenerUsuarios).pipe(retry(3), catchError(this.handleError))
+  }
+
+  getUsuario(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.obtenerUsuarios).pipe(retry(3), catchError(this.handleError))
   }
   addUsuarios(usuario: Usuario): Observable<Usuario> {
@@ -37,6 +43,12 @@ export class UsuarioService {
   }
   updateUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(this.modificarUsuario + usuario.id, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
+  }
+  updateUsuarioRol(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(this.modificarUsuarioRole + usuario.id, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));

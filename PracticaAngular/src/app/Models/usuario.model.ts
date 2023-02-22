@@ -11,4 +11,7 @@ export interface Usuario {
   password: string;
   ruta: string;
   token: string;
+  estado: string;
+  role:string;
+
 }
