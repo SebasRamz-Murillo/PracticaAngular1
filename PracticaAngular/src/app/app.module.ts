@@ -46,6 +46,8 @@ import { MonstrousDeleteComponent } from './components/mh/monstrous-delete/monst
 import { MonstrousFormComponent } from './components/mh/monstrous-form/monstrous-form.component';
 import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/monstrous-form-edit.component';
 import { PermisosComponent } from './components/permisos/permisos.component';
+import { PermisosSesionExpiradaComponent } from './components/permisos-sesion-expirada/permisos-sesion-expirada.component';
+import { PermisosCuentaDesactivadaComponent } from './components/permisos-cuenta-desactivada/permisos-cuenta-desactivada.component';
 
 
 
@@ -90,7 +92,9 @@ import { PermisosComponent } from './components/permisos/permisos.component';
     MonstrousDeleteComponent,
     MonstrousFormComponent,
     MonstrousFormEditComponent,
-    PermisosComponent
+    PermisosComponent,
+    PermisosSesionExpiradaComponent,
+    PermisosCuentaDesactivadaComponent
   ],
   imports: [
     BrowserModule,

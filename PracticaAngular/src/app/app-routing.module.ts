@@ -37,39 +37,45 @@ import { MonstrousFormEditComponent } from './components/mh/monstrous-form-edit/
 import { ValidarRolGuard } from './guards/validar-rol.guard';
 import { PermisosComponent } from './components/permisos/permisos.component';
 import { ValidarRolGuestGuard } from './guards/validar-rol-guest.guard';
+import { ValidarCuentaGuard } from './guards/validar-cuenta.guard';
+import { ValidarTokenGuard } from './guards/validar-token.guard';
+import { PermisosSesionExpiradaComponent } from './components/permisos-sesion-expirada/permisos-sesion-expirada.component';
+import { PermisosCuentaDesactivadaComponent } from './components/permisos-cuenta-desactivada/permisos-cuenta-desactivada.component';
 
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
-  { path: 'Error', component: PermisosComponent },
+  { path: 'error', component: PermisosComponent },
+  { path: 'sesionExpirada', component: PermisosSesionExpiradaComponent },
+  { path: 'cuentaDesactivada', component: PermisosCuentaDesactivadaComponent },
   { path: 'registro', component: UsuarioRegistroComponent },
   { path: 'registro/verificar/:url', component: UsuarioCodigoVerificacionComponent},
   //Verificar si es usuario o administrador
-  { path: 'chef', component: ChefComponent ,canActivate: [ValidarRolGuard]},
-  { path: 'chef/create', component: ChefFormComponent,canActivate: [ValidarRolGuard]},
-  { path: 'chef/edit/:id', component: ChefFormEditComponent ,canActivate: [ValidarRolGuard]},
-  { path: 'chef/delete/:id', component: ChefDeleteComponent,canActivate: [ValidarRolGuard]},
+  { path: 'chef', component: ChefComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'chef/create', component: ChefFormComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'chef/edit/:id', component: ChefFormEditComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'chef/delete/:id', component: ChefDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
   //Verificar si es usuario o administrador
-  { path: 'ingredientes', component: IngredienteComponent ,canActivate: [ValidarRolGuard]},
-  { path: 'ingredientes/create', component: IngredienteFormComponent,canActivate: [ValidarRolGuard]},
-  { path: 'ingredientes/edit/:id', component: IngredienteFormEditComponent,canActivate: [ValidarRolGuard]},
-  { path: 'ingredientes/delete/:id', component: IngredienteDeleteComponent,canActivate: [ValidarRolGuard]},
+  { path: 'ingredientes', component: IngredienteComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'ingredientes/create', component: IngredienteFormComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'ingredientes/edit/:id', component: IngredienteFormEditComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'ingredientes/delete/:id', component: IngredienteDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
   //Verificar si es usuario o administrador
-  { path: 'recetas', component: RecetaComponent,canActivate: [ValidarRolGuard]},
-  { path: 'recetas/create', component: RecetaFormComponent,canActivate: [ValidarRolGuard]},
-  { path: 'recetas/edit/:id', component: RecetaFormEditComponent,canActivate: [ValidarRolGuard]},
-  { path: 'recetas/delete/:id', component: RecetaDeleteComponent,canActivate: [ValidarRolGuard]},
+  { path: 'recetas', component: RecetaComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'recetas/create', component: RecetaFormComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'recetas/edit/:id', component: RecetaFormEditComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'recetas/delete/:id', component: RecetaDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
 
 
-  { path: 'mapas', component: MapaComponent, canActivate: [ValidarRolGuestGuard]},
-  { path: 'mapa/create', component: MapaFormComponent, canActivate: [ValidarRolGuestGuard]},
-  { path: 'mapas/edit/:id', component: MapaFormEditComponent, canActivate: [ValidarRolGuestGuard]},
-  { path: 'mapas/delete/:id', component: MapaDeleteComponent, canActivate: [ValidarRolGuestGuard]},
+  { path: 'mapas', component: MapaComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'mapa/create', component: MapaFormComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'mapas/edit/:id', component: MapaFormEditComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'mapas/delete/:id', component: MapaDeleteComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
 
-  { path: 'objeto', component: ObjetoComponent, canActivate: [ValidarRolGuestGuard]},
-  { path: 'objeto/create', component: ObjetoFormComponent, canActivate: [ValidarRolGuestGuard]},
-  { path: 'objeto/edit/:id', component: ObjetoFormEditComponent, canActivate: [ValidarRolGuestGuard]},
-  { path: 'objeto/delete/:id', component: ObjetoDeleteComponent, canActivate: [ValidarRolGuestGuard]},
+  { path: 'objeto', component: ObjetoComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'objeto/create', component: ObjetoFormComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'objeto/edit/:id', component: ObjetoFormEditComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'objeto/delete/:id', component: ObjetoDeleteComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
 
   { path: 'zonaObjetos', component: MapaObjetoComponent},
   { path: 'zonaObjetos/create', component: ZonaObjetoFormComponent},
