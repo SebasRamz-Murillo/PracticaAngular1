@@ -52,7 +52,10 @@ export class ObjetoFormEditComponent implements OnInit{
       this.form.patchValue({
         id: this.objeto2?.id,
         nombre: this.objeto2?.nombre,
-
+        rareza: this.objeto2?.rareza,
+        limiteBolsa: this.objeto2?.limiteBolsa,
+        valor: this.objeto2?.valor,
+        descripcion: this.objeto2?.descripcion
       })
     });
 

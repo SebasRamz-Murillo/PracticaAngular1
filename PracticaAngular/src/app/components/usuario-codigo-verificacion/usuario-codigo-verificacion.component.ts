@@ -43,7 +43,7 @@ export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
     this.route
     environment.URL_SIGNED = this.url;
     console.log(environment.URL_SIGNED);
-    this.router.navigate(['']);
+    this.router.navigate(['cuentaActiva']);
     this.loginService.enviarCodigo(values,url).subscribe();
     this.form.reset();
   }

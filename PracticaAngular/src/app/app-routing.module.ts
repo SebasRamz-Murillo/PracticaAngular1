@@ -41,6 +41,12 @@ import { ValidarCuentaGuard } from './guards/validar-cuenta.guard';
 import { ValidarTokenGuard } from './guards/validar-token.guard';
 import { PermisosSesionExpiradaComponent } from './components/permisos-sesion-expirada/permisos-sesion-expirada.component';
 import { PermisosCuentaDesactivadaComponent } from './components/permisos-cuenta-desactivada/permisos-cuenta-desactivada.component';
+import { UsuarioEditComponent } from './components/usuario-edit/usuario-edit.component';
+import { UsuarioEditRoleComponent } from './components/usuario-edit-role/usuario-edit-role.component';
+import { ValidarIDGuard } from './guards/validar-id.guard';
+import { PermisoValidarIDComponent } from './components/permiso-validar-id/permiso-validar-id.component';
+import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
+import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
 
 const routes: Routes = [
 
@@ -48,34 +54,38 @@ const routes: Routes = [
   { path: 'error', component: PermisosComponent },
   { path: 'sesionExpirada', component: PermisosSesionExpiradaComponent },
   { path: 'cuentaDesactivada', component: PermisosCuentaDesactivadaComponent },
+  { path: 'idInvalido', component: PermisoValidarIDComponent},
+  { path: 'cuentaActiva', component: InfoCuentaActivaComponent },
+  { path: 'correo', component: InfoCorreoComponent },
+
   { path: 'registro', component: UsuarioRegistroComponent },
   { path: 'registro/verificar/:url', component: UsuarioCodigoVerificacionComponent},
   //Verificar si es usuario o administrador
   { path: 'chef', component: ChefComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
   { path: 'chef/create', component: ChefFormComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'chef/edit/:id', component: ChefFormEditComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'chef/delete/:id', component: ChefDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'chef/edit/:id', component: ChefFormEditComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard]},
+  { path: 'chef/delete/:id', component: ChefDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard]},
   //Verificar si es usuario o administrador
   { path: 'ingredientes', component: IngredienteComponent ,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
   { path: 'ingredientes/create', component: IngredienteFormComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'ingredientes/edit/:id', component: IngredienteFormEditComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'ingredientes/delete/:id', component: IngredienteDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'ingredientes/edit/:id', component: IngredienteFormEditComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard]},
+  { path: 'ingredientes/delete/:id', component: IngredienteDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard]},
   //Verificar si es usuario o administrador
   { path: 'recetas', component: RecetaComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
   { path: 'recetas/create', component: RecetaFormComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'recetas/edit/:id', component: RecetaFormEditComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'recetas/delete/:id', component: RecetaDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'recetas/edit/:id', component: RecetaFormEditComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard]},
+  { path: 'recetas/delete/:id', component: RecetaDeleteComponent,canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard]},
 
 
   { path: 'mapas', component: MapaComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
   { path: 'mapa/create', component: MapaFormComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
-  { path: 'mapas/edit/:id', component: MapaFormEditComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
-  { path: 'mapas/delete/:id', component: MapaDeleteComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'mapas/edit/:id', component: MapaFormEditComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard,ValidarIDGuard]},
+  { path: 'mapas/delete/:id', component: MapaDeleteComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard,ValidarIDGuard]},
 
   { path: 'objeto', component: ObjetoComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
   { path: 'objeto/create', component: ObjetoFormComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
-  { path: 'objeto/edit/:id', component: ObjetoFormEditComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
-  { path: 'objeto/delete/:id', component: ObjetoDeleteComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard]},
+  { path: 'objeto/edit/:id', component: ObjetoFormEditComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard,ValidarIDGuard]},
+  { path: 'objeto/delete/:id', component: ObjetoDeleteComponent, canActivate: [ValidarRolGuestGuard, ValidarCuentaGuard,ValidarIDGuard]},
 
   { path: 'zonaObjetos', component: MapaObjetoComponent},
   { path: 'zonaObjetos/create', component: ZonaObjetoFormComponent},
@@ -88,9 +98,9 @@ const routes: Routes = [
   { path: 'monstruos/delete/:id', component: MonstrousDeleteComponent},
 
 
-  { path: 'usuarios', component: UsuarioComponent },
-  { path: 'usuarios/edit/:id', component: UsuarioComponent },
-  { path: 'usuarios/editRole/:id', component: UsuarioComponent },
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
+  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard] },
+  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard] },
 
   { path: '**', component: PageNoFoundComponent }
 ];

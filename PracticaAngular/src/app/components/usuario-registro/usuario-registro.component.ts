@@ -37,7 +37,7 @@ export class UsuarioRegistroComponent {
   OnSubmit(values: Usuario) {
     this.loginService.registrarUsuario(values).subscribe();
     this.form.reset();
-    this.location.back();
+    this.router.navigate(['correo']);
   }
 }
 

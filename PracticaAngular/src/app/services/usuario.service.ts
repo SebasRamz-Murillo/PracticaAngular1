@@ -4,6 +4,7 @@ import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { tap } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 
@@ -18,9 +19,8 @@ export class UsuarioService {
   private obtenerUsuario = this.APIURL+'/usuario/info/';
   private modificarUsuario = this.APIURL+'/usuario/update/'
   private modificarUsuarioRole = this.APIURL+'/usuario/updateRole/'
-
   private eliminarUsuario = this.APIURL+'/usuario/delete/'
-
+  mytoken = localStorage.getItem('token');
   constructor(private http: HttpClient) { }
   get_refresh$() {
     return this._refresh$;
@@ -39,6 +39,14 @@ export class UsuarioService {
     ));
   }
   getOneUsuario(id: number): Observable<Usuario[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+
+    const httpOptions = {
+      headers: headers
+    };
+
     return this.http.get<Usuario[]>(this.obtenerUsuario + id).pipe(retry(3), catchError(this.handleError))
   }
   updateUsuario(usuario: Usuario): Observable<Usuario> {

@@ -13,5 +13,5 @@ export interface Usuario {
   token: string;
   estado: string;
   role:string;
-
+  boton: string;
 }

@@ -14,7 +14,7 @@ export class ObjetoService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
   private obtenerObjetos = this.APIURL + '/objetos';
-  private crearObjeto = this.APIURL + '/objetos/crear/';
+  private crearObjeto = this.APIURL + '/objetos/insertar';
   private obtenerObjeto = this.APIURL + '/objetos/';
   private modificarObjeto = this.APIURL + '/objetos/modificar/';
   private eliminarObjeto = this.APIURL + '/objetos/eliminar/';

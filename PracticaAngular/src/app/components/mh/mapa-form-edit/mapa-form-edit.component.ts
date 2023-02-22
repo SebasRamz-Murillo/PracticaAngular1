@@ -51,7 +51,8 @@ export class MapaFormEditComponent implements OnInit{
       this.form.patchValue({
         id: this.mapa2?.id,
         nombre: this.mapa2?.nombre,
-
+        descripcion: this.mapa2?.descripcion,
+        totalZonas: this.mapa2?.totalZonas,
       })
     });
 

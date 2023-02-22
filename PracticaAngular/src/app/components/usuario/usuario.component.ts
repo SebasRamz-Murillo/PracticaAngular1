@@ -17,7 +17,7 @@ import { environment } from 'src/environments/environment';
 
 export class UsuarioComponent implements OnInit {
   usuarios: Usuario[] = [];
-  usuario: Usuario[] = [];
+  user?: Usuario;
   suscription?: Subscription;
   myToken = localStorage.getItem('token') || '';
 
@@ -29,8 +29,7 @@ export class UsuarioComponent implements OnInit {
   ngOnInit(): void {
     const token = this.myToken;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    this.http.get<Usuario[]>(environment.URL_API+'/usuario/info', { headers }).subscribe(data => this.usuario = data);
+    this.http.get<Usuario>(environment.URL_API+'/usuario/infoObjeto', { headers }).subscribe(data => this.user = data);
     this.getUsuarios();
     this.suscription = this.usuarioService.get_refresh$().subscribe(() => {
       this.getUsuarios();
@@ -43,14 +42,18 @@ export class UsuarioComponent implements OnInit {
       this.usuarios = data.map(usuario => {
         const estado = this.obtenerEstado(usuario.activo);
         const role = this.obtenerRole(usuario.rol_id);
-
-        return {...usuario, estado,role};
+        const boton = this.botonEstado(usuario);
+        return {...usuario, estado,role,boton};
       });
     });
   }
 
   obtenerEstado(activo: boolean): string {
     return activo ? 'Activo' : 'Inactivo';
+  }
+
+  botonEstado(usuario: Usuario): string {
+    return usuario.activo ? 'Desactivar' : 'Activar';
   }
   obtenerRole(rol_id: number): string {
     switch (rol_id) {

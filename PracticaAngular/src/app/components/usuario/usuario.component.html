@@ -1,22 +1,20 @@
-
 <div class="container mx-auto">
   <div class="grid grid-cols-5 pt-5">
-    <div class="col-span-1" style="width: min-content;">
-
+    <div class="col-span-1" style="width: min-content"></div>
+  </div>
+  <div class="col-start-1 col-end-8 items-end justify-center">
+    <div class="pt-5 pb-5" style="margin: auto; width: 100%">
+      <h1 class="text-2xl font-bold text-gray-700 dark:text-gray-200">
+        Usuarios
+      </h1>
+      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 pr-80">
+        Lista de Usuarios
+      </p>
     </div>
-    <div class="col-start-1 col-end-8 items-end justify-center">
-      <div class="pt-5 pb-5" style="margin: auto; width: 100%">
-        <h1 class="text-2xl font-bold text-gray-700 dark:text-gray-200">
-          Usuarios
-        </h1>
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 pr-80">
-          Lista de Usuarios
-        </p>
-      </div>
-      <div
-        class="relative overflow-x-auto shadow-md"
-        style="width: 100%; margin: auto"
-      >
+    <div
+      class="relative overflow-x-auto shadow-md"
+      style="width: 100%; margin: auto"
+    >
       <table class="text-sm text-center text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-white bg-green-700 dark:bg-gray-800 dark:text-gray-400"
@@ -31,10 +29,15 @@
             <th scope="col" class="px-3 py-1">Rol</th>
             <th scope="col" class="px-7 py-1">Estatus</th>
 
-            <th scope="col" class="px-6 py-1">Editar</th>
-            <th scope="col" class="px-8 py-1">Editar Rol</th>
-
-            <th scope="col" class="px-6 py-1">Eliminar</th>
+            <th *ngIf="user?.rol_id == 1 || 2" scope="col" class="px-6 py-1">
+              Editar
+            </th>
+            <th *ngIf="user?.rol_id == 1" scope="col" class="px-8 py-1">
+              Editar Rol
+            </th>
+            <!--
+            <th scope="col" class="px-6 py-1">Desactivar</th>
+            -->
           </tr>
         </thead>
         <tbody>
@@ -48,7 +51,7 @@
             <td class="px-6 py-2">{{ c.role }}</td>
             <td class="px-6 py-2">{{ c.estado }}</td>
 
-            <td class="px-6 py-2">
+            <td class="px-6 py-2" *ngIf="user?.rol_id == 1 || user?.rol_id == 2">
               <a
                 routerLink="edit/{{ c.id }}"
                 routerLinkActive="active"
@@ -56,7 +59,7 @@
                 >Edit</a
               >
             </td>
-            <td class="px-8 py-2">
+            <td *ngIf="user?.rol_id == 1" class="px-8 py-2">
               <a
                 routerLink="editRole/{{ c.id }}"
                 routerLinkActive="active"
@@ -64,19 +67,11 @@
                 >Edit Rol</a
               >
             </td>
-            <td class="px-6 py-2">
-              <a
-                routerLink="delete/{{ c.id }}}"
-                routerLinkActive="active"
-                ariaCurrentWhenActive="page"
-                >Delete</a
-              >
-            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    </div>
   </div>
 </div>
+
 <router-outlet></router-outlet>
