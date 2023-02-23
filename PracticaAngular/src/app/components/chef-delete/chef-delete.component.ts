@@ -14,22 +14,18 @@ import { Location } from '@angular/common';
 })
 export class ChefDeleteComponent {
   form: FormGroup;
-  chef2?: Chef;
-  chef: Chef = { id: 0, nombre: '', ap_paterno: '', ap_materno: '', nacionalidad: '', edad: 0 };
+  chef?: Chef;
   id: number = 0;
-  nombre: string = '';
   suscription?: Subscription;
 
   constructor(private route: ActivatedRoute, private chefService: ChefService, private fb: FormBuilder, private location: Location) {
     this.form = this.fb.group({
       id: [this.id, Validators.required],
-      nombre: [this.nombre, Validators.required]
     });
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.nombre = this.route.snapshot.params['nombre'];
     this.getOneChef(this.id);
     this.suscription = this.chefService.get_refresh$().subscribe(() => {
       this.getOneChef(this.id);
@@ -37,14 +33,15 @@ export class ChefDeleteComponent {
   }
 
   getOneChef(id: number) {
-    this.chefService.getOneChef(id).subscribe((data: Chef[]) => {
-      this.chef2 = data[0];
+    this.chefService.getOneChef(id).subscribe((data: Chef) => {
+      this.chef = data;
+      console.log(this.chef);
       this.form.patchValue({
-        id: this.chef2?.id,
-        nombre: this.chef2?.nombre,
-      })
+        id: this.chef?.id,
+      });
     });
   }
+
   OnSubmit(values: Chef) {
     this.chefService.deleteChef(values).subscribe();
     this.form.reset();

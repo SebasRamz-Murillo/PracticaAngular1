@@ -51,7 +51,7 @@ export class ChefService {
     }
     ));
   }
-  getOneChef(id: number): Observable<Chef[]> {
+  getOneChef(id: number): Observable<Chef> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.mytoken}`
     });
@@ -60,7 +60,7 @@ export class ChefService {
       headers: headers
     };
 
-    return this.http.get<Chef[]>(this.obtenerChef + id).pipe(retry(3), catchError(this.handleError))
+    return this.http.get<Chef>(this.obtenerChef + id).pipe(retry(3), catchError(this.handleError))
   }
   updateChef(chef: Chef): Observable<Chef> {
     const headers = new HttpHeaders({

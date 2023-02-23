@@ -33,6 +33,6 @@ export class ChefFormComponent {
   OnSubmit(values: Chef) {
     this.chefService.addChefs(values).subscribe();
     this.form.reset();
-    this.location.back();
+
   }
 }

@@ -1,58 +1,61 @@
-
-<nav
-  *ngIf="myToken"
-  class="px-2 p-2 bg-gray-600 border-gray-600 dark:bg-gray-900 dark:border-gray-600"
+<nav *ngIf="myToken"
+  class="relative flex w-full flex-wrap items-center justify-between bg-neutral-900 py-3 text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start"
+  data-te-navbar-ref
 >
-  <div class="container flex flex-wrap items-center justify-between mx-auto">
-    <a href="#" class="flex items-center">
-      <img
-        src="https://flowbite.com/docs/images/logo.svg"
-        class="h-6 mr-3 sm:h-10"
-        alt="Flowbite Logo"
-      />
-      <span
-
-        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-white"
-        >Bienvenido! {{usuario?.name}}</span
-      >
-    </a>
+  <div class="flex w-full flex-wrap items-center justify-between px-6">
     <button
-      data-collapse-toggle="navbar-dropdown"
+      class="block border-0 bg-transparent py-2 px-2.5 text-neutral-200 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
       type="button"
-      class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-      aria-controls="navbar-dropdown"
+      data-te-collapse-init
+      data-te-target="#navbarSupportedContent4"
+      aria-controls="navbarSupportedContent4"
       aria-expanded="false"
+      aria-label="Toggle navigation"
     >
-      <span class="sr-only">Open main menu</span>
-      <svg
-        class="w-6 h-6"
-        aria-hidden="true"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-          clip-rule="evenodd"
-        ></path>
-      </svg>
+      <span class="[&>svg]:w-7">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-7 w-7"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </span>
     </button>
     <div
-
-      class="hidden w-full md:block md:w-auto"
-      id="navbar-dropdown"
+      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+      id="navbarSupportedContent4"
+      data-te-collapse-item
     >
-      <ul
+      <span
+        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-white"
+        >Bienvenido! {{ usuario?.name }}</span
+      >
+      <!-- Left links -->
 
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="relative flex items-center">
+      <ul
         class="flex flex-col p-4 mt-4 border border-gray-600 rounded-lg bg-gray-600 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-600 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
         <!--Ambos roles-->
 
-        <li *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3">
+        <li
+          *ngIf="
+            usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3
+          "
+        >
           <a
             routerLink="/chef"
-
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
             class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -60,9 +63,12 @@
           >
         </li>
 
-        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3">
+        <li
+          *ngIf="
+            usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3
+          "
+        >
           <a
-
             routerLink="/ingredientes"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -70,9 +76,12 @@
             >Ingredientes</a
           >
         </li>
-        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3">
+        <li
+          *ngIf="
+            usuario?.rol_id == 1 || usuario?.rol_id == 2 || usuario?.rol_id == 3
+          "
+        >
           <a
-
             routerLink="/recetas"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -81,9 +90,8 @@
           >
         </li>
 
-        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3">
+        <li *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3">
           <a
-
             routerLink="/objeto"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -92,9 +100,8 @@
           >
         </li>
 
-        <li  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3">
+        <li *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3">
           <a
-
             routerLink="/mapas"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -102,9 +109,8 @@
             >Mapas</a
           >
         </li>
-        <li  *ngIf="usuario?.rol_id == 1">
+        <li *ngIf="usuario?.rol_id == 1">
           <a
-
             routerLink="/usuarios"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -112,16 +118,33 @@
             >Usuarios</a
           >
         </li>
-        <li ></li>
-        <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)"  *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 3 || usuario?.rol_id == 2">
-          <input type="text" hidden="true" formControlName="token" value="{{myToken}}">
+        <li></li>
+        <form
+          [formGroup]="form"
+          (ngSubmit)="OnSubmit(form.value)"
+          *ngIf="
+            usuario?.rol_id == 1 || usuario?.rol_id == 3 || usuario?.rol_id == 2
+          "
+        >
+          <input
+            type="text"
+            hidden="true"
+            formControlName="token"
+            value="{{ myToken }}"
+          />
           <li>
-            <button type="submit" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cerrar Sesion</button>
+            <button
+              type="submit"
+              class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >
+              Cerrar Sesion
+            </button>
           </li>
         </form>
       </ul>
     </div>
+    <!-- Right elements -->
   </div>
-  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </nav>
+
 <router-outlet></router-outlet>

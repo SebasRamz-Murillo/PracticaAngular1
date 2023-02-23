@@ -15,9 +15,7 @@ import { Location } from '@angular/common';
 })
 export class ChefFormEditComponent implements OnInit{
   form: FormGroup;
-  chef2?: Chef;
-
-  chef: Chef = { id: 0, nombre: '', ap_paterno: '', ap_materno: '', nacionalidad: '', edad: 0 };
+  chef?: Chef;
   suscription?:Subscription;
   id:number = 0;
 
@@ -49,25 +47,24 @@ export class ChefFormEditComponent implements OnInit{
     console.log('Se destruyó el componente');
   }
   getOneChef(id : number){
-    this.chefService.getOneChef(id).subscribe((data: Chef[]) => {
-      this.chef2 = data[0];
+    this.chefService.getOneChef(id).subscribe((data: Chef) => {
+      this.chef = data;
+      console.log(this.chef);
       this.form.patchValue({
-        id: this.chef2?.id,
-        nombre: this.chef2?.nombre,
-        ap_paterno: this.chef2?.ap_paterno,
-        ap_materno: this.chef2?.ap_materno,
-        nacionalidad: this.chef2?.nacionalidad,
-        edad: this.chef2?.edad
-      })
+        id: this.chef?.id,
+        nombre: this.chef?.nombre,
+        ap_paterno: this.chef?.ap_paterno,
+        ap_materno: this.chef?.ap_materno,
+        nacionalidad: this.chef?.nacionalidad,
+        edad: this.chef?.edad
+      });
     });
 
   }
     OnSubmit(values: Chef) {
     this.chefService.updateChef(values).subscribe();
-    this.form.reset();
-
+    this.form.reset();;
   }
   goBack(){
-
   }
 }
