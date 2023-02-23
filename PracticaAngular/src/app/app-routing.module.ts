@@ -48,10 +48,12 @@ import { PermisoValidarIDComponent } from './components/permiso-validar-id/permi
 import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
 import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
 import { ValidarRolUsuarioGuard } from './guards/validar-rol-usuario.guard';
+import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
 
 const routes: Routes = [
 
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent},
+  { path: 'login', component: LoginAlternoComponent},
   { path: 'error', component: PermisosComponent },
   { path: 'sesionExpirada', component: PermisosSesionExpiradaComponent },
   { path: 'cuentaDesactivada', component: PermisosCuentaDesactivadaComponent },

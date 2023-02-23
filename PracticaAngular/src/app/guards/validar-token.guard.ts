@@ -33,11 +33,13 @@ export class ValidarTokenGuard implements CanActivate {
     };
     return this.http.get<boolean>(environment.URL_API + '/usuario/validarToken', httpOptions).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
+        if (error.ok === false || error.status === 401) {
           localStorage.removeItem('token');
+          console.log(error);
+          console.log('Token no válido');
           this.router.navigate(['']);
         } else {
-          this.router.navigate(['/error']);
+          this.router.navigate(['/chef']);
         }
         return throwError(error.message);
       })

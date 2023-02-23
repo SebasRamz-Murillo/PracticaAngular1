@@ -54,6 +54,7 @@ import { PermisoValidarIDComponent } from './components/permiso-validar-id/permi
 import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
 import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
 import { UsuarioDesactivarComponent } from './components/usuario-edit/usuario-desactivar/usuario-desactivar.component';
+import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import { UsuarioDesactivarComponent } from './components/usuario-edit/usuario-de
     UsuarioDesactivarComponent,
     PermisoValidarIDComponent,
     InfoCorreoComponent,
-    InfoCuentaActivaComponent
+    InfoCuentaActivaComponent,
+    LoginAlternoComponent
   ],
   imports: [
     BrowserModule,
