@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { catchError, retry } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { UsuarioService } from '../services/usuario.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs'; // Agrega la importación de of
 
@@ -9,21 +15,32 @@ import { Observable, of } from 'rxjs'; // Agrega la importación de of
   providedIn: 'root'
 })
 export class ValidarTokenGuard implements CanActivate {
-  constructor(private http: HttpClient, private router: Router) { }
+
+  constructor(private http: HttpClient,
+    private router: Router,
+    private usuarioService: UsuarioService,
+    private handleError: HttpHandler) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      this.router.navigate(['/chef']);
-      console.log('Token válido');
-      return true;
-    } else {
-      console.log('Token inválido');
-
-      return false;
-    }
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    const httpOptions = {
+      headers: headers
+    };
+    return this.http.get<boolean>(environment.URL_API + '/usuario/validarToken', httpOptions).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          localStorage.removeItem('token');
+          this.router.navigate(['']);
+        } else {
+          this.router.navigate(['/error']);
+        }
+        return throwError(error.message);
+      })
+    );
   }
 }

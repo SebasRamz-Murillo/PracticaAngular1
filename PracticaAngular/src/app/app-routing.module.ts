@@ -51,7 +51,7 @@ import { ValidarRolUsuarioGuard } from './guards/validar-rol-usuario.guard';
 
 const routes: Routes = [
 
-  { path: '', component: LoginComponent, canActivate: [ValidarTokenGuard] },
+  { path: '', component: LoginComponent },
   { path: 'error', component: PermisosComponent },
   { path: 'sesionExpirada', component: PermisosSesionExpiradaComponent },
   { path: 'cuentaDesactivada', component: PermisosCuentaDesactivadaComponent },

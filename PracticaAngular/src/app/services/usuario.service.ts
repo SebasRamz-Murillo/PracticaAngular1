@@ -14,12 +14,13 @@ import { environment } from '../../environments/environment';
 export class UsuarioService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
-  private obtenerUsuarios = this.APIURL+'/usuario';
-  private crearUsuario = this.APIURL+'/usuario/';
-  private obtenerUsuario = this.APIURL+'/usuario/info/';
-  private modificarUsuario = this.APIURL+'/usuario/update/'
-  private modificarUsuarioRole = this.APIURL+'/usuario/updateRole/'
-  private eliminarUsuario = this.APIURL+'/usuario/delete/'
+  private obtenerUsuarios = this.APIURL + '/usuario';
+  private crearUsuario = this.APIURL + '/usuario/';
+  private obtenerUsuario = this.APIURL + '/usuario/info/';
+  private modificarUsuario = this.APIURL + '/usuario/update/'
+  private modificarUsuarioRole = this.APIURL + '/usuario/updateRole/'
+  private eliminarUsuario = this.APIURL + '/usuario/delete/'
+  private validarToken = this.APIURL + '/usuario/validarToken'
   mytoken = localStorage.getItem('token');
   constructor(private http: HttpClient) { }
   get_refresh$() {
@@ -37,6 +38,15 @@ export class UsuarioService {
       this._refresh$.next();
     }
     ));
+  }
+  isValidToken(): Observable<boolean> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+    const httpOptions = {
+      headers: headers
+    };
+    return this.http.get<boolean>(this.validarToken, httpOptions).pipe(retry(3), catchError(this.handleError))
   }
   getOneUsuario(id: number): Observable<Usuario> {
     const headers = new HttpHeaders({
@@ -61,7 +71,7 @@ export class UsuarioService {
     }
     ));
   }
-  deleteUsuario(usuario:Usuario): Observable<Usuario[]> {
+  deleteUsuario(usuario: Usuario): Observable<Usuario[]> {
     return this.http.delete<Usuario[]>(this.eliminarUsuario + usuario.id).pipe(retry(3), catchError(this.handleError))
   }
 
