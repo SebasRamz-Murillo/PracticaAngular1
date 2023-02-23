@@ -47,10 +47,11 @@ import { ValidarIDGuard } from './guards/validar-id.guard';
 import { PermisoValidarIDComponent } from './components/permiso-validar-id/permiso-validar-id.component';
 import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
 import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
+import { ValidarRolUsuarioGuard } from './guards/validar-rol-usuario.guard';
 
 const routes: Routes = [
 
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, canActivate: [ValidarTokenGuard] },
   { path: 'error', component: PermisosComponent },
   { path: 'sesionExpirada', component: PermisosSesionExpiradaComponent },
   { path: 'cuentaDesactivada', component: PermisosCuentaDesactivadaComponent },
@@ -98,9 +99,9 @@ const routes: Routes = [
   { path: 'monstruos/delete/:id', component: MonstrousDeleteComponent},
 
 
-  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard]},
-  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard] },
-  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard] },
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarRolUsuarioGuard]},
+  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
+  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
 
   { path: '**', component: PageNoFoundComponent }
 ];

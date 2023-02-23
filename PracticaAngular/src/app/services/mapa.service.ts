@@ -52,7 +52,7 @@ export class MapaService {
     ));
   }
 
-  getOneMapa(id:number): Observable<Mapa[]> {
+  getOneMapa(id:number): Observable<Mapa> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.mytoken}`
     });
@@ -61,7 +61,7 @@ export class MapaService {
       headers: headers
     };
 
-    return this.http.get<Mapa[]>(this.obtenerMapa+id).pipe(retry(3), catchError(this.handleError))
+    return this.http.get<Mapa>(this.obtenerMapa+id).pipe(retry(3), catchError(this.handleError))
   }
 
   updateMapa(mapa: Mapa): Observable<Mapa> {

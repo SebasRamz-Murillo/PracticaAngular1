@@ -50,10 +50,10 @@ import { PermisosSesionExpiradaComponent } from './components/permisos-sesion-ex
 import { PermisosCuentaDesactivadaComponent } from './components/permisos-cuenta-desactivada/permisos-cuenta-desactivada.component';
 import { UsuarioEditComponent } from './components/usuario-edit/usuario-edit.component';
 import { UsuarioEditRoleComponent } from './components/usuario-edit-role/usuario-edit-role.component';
-import { UsuarioDesactivarComponent } from './components/usuario-desactivar/usuario-desactivar.component';
 import { PermisoValidarIDComponent } from './components/permiso-validar-id/permiso-validar-id.component';
 import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
 import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
+import { UsuarioDesactivarComponent } from './components/usuario-edit/usuario-desactivar/usuario-desactivar.component';
 
 
 @NgModule({

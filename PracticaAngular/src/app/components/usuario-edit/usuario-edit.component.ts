@@ -17,10 +17,9 @@ import { environment } from 'src/environments/environment';
 })
 export class UsuarioEditComponent implements OnInit {
   form: FormGroup;
-  usuario2?: Usuario;
   user?: Usuario;
   muToken = localStorage.getItem('token') || '';
-  usuario: Usuario = { id: 0, name: '', ap_paterno: '', ap_materno: '', email: '', telefono: "", codigo: 0, activo: false, rol_id: 0, password: '', ruta: '', token: '', estado: '', role: '', boton: '' };
+  usuario?: Usuario;
   suscription?: Subscription;
   id: number = 0;
 
@@ -59,14 +58,14 @@ export class UsuarioEditComponent implements OnInit {
   }
 
   getOneUsuario(id: number): void {
-    this.usuarioService.getOneUsuario(id).subscribe((data: Usuario[]) => {
-      this.usuario2 = data[0];
+    this.usuarioService.getOneUsuario(id).subscribe((data: Usuario) => {
+      this.usuario = data;
       this.form.patchValue({
-        id: this.usuario2?.id,
-        name: this.usuario2?.name,
-        ap_paterno: this.usuario2?.ap_paterno,
-        ap_materno: this.usuario2?.ap_materno,
-        activo: this.usuario2?.activo,
+        id: this.usuario.id,
+        name: this.usuario.name,
+        ap_paterno: this.usuario?.ap_paterno,
+        ap_materno: this.usuario?.ap_materno,
+        activo: this.usuario?.activo
       });
     });
   }

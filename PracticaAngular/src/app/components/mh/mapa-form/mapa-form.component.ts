@@ -31,6 +31,5 @@ export class MapaFormComponent {
   OnSubmit(values: Mapa) {
     this.mapaService.addMapa(values).subscribe();
     this.form.reset();
-    this.location.back();
   }
 }

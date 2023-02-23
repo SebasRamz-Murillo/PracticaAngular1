@@ -1,77 +1,115 @@
-<div class="container mx-auto">
-  <div class="grid grid-cols-5 pt-5">
-    <div class="col-span-1" style="width: min-content"></div>
-  </div>
-  <div class="col-start-1 col-end-8 items-end justify-center">
-    <div class="pt-5 pb-5" style="margin: auto; width: 100%">
-      <h1 class="text-2xl font-bold text-gray-700 dark:text-gray-200">
-        Usuarios
-      </h1>
-      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 pr-80">
-        Lista de Usuarios
-      </p>
-    </div>
-    <div
-      class="relative overflow-x-auto shadow-md"
-      style="width: 100%; margin: auto"
-    >
-      <table class="text-sm text-center text-gray-500 dark:text-gray-400">
-        <thead
-          class="text-xs text-white bg-green-700 dark:bg-gray-800 dark:text-gray-400"
-        >
-          <tr>
-            <th scope="col" class="px-1 py-1">ID</th>
-            <th scope="col" class="px-4 py-1">Nombre</th>
-            <th scope="col" class="px-5 py-1">Apellido Paterno</th>
-            <th scope="col" class="px-5 py-1">Apellido Materno</th>
-            <th scope="col" class="px-7 py-1">Telefono</th>
-            <th scope="col" class="px-7 py-1">Email</th>
-            <th scope="col" class="px-3 py-1">Rol</th>
-            <th scope="col" class="px-7 py-1">Estatus</th>
+<router-outlet></router-outlet>
+<!-- component -->
+<div class="overflow-hidden border-gray-200 pl-36" style="width: 50%">
+  <p class="text-lg text-black dark:text-black pr-96">Lista de Usuarios</p>
+</div>
 
-            <th *ngIf="user?.rol_id == 1 || 2" scope="col" class="px-6 py-1">
-              Editar
-            </th>
-            <th *ngIf="user?.rol_id == 1" scope="col" class="px-8 py-1">
-              Editar Rol
-            </th>
-            <!--
-            <th scope="col" class="px-6 py-1">Desactivar</th>
-            -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white dark:bg-gray-800" *ngFor="let c of usuarios">
-            <td class="px-1 py-2">{{ c.id }}</td>
-            <td class="px-6 py-2">{{ c.name }}</td>
-            <td class="px-7 py-2">{{ c.ap_paterno }}</td>
-            <td class="px-7 py-2">{{ c.ap_materno }}</td>
-            <td class="px-7 py-2">{{ c.telefono }}</td>
-            <td class="px-6 py-2">{{ c.email }}</td>
-            <td class="px-6 py-2">{{ c.role }}</td>
-            <td class="px-6 py-2">{{ c.estado }}</td>
+<div class="grid grid-cols-12">
+  <div
+    class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5 col-start-2 col-end-11"
+    style="width: 100%; margin: left"
+  >
+    <table class="w-full border-collapse bg-white text-sm text-gray-500">
+      <thead class="bg-gray-50 text-left">
+        <tr>
+          <th scope="col" class="px-2 py-4 font-medium text-gray-900">ID</th>
+          <th scope="col" class="px-2 py-4 font-medium text-gray-900">
+            Nombre
+          </th>
+          <th scope="col" class="px-3 py-4 font-medium text-gray-900">
+            Telefono
+          </th>
+          <th scope="col" class="px-3 py-4 font-medium text-gray-900">Email</th>
+          <th scope="col" class="px-3 py-4 font-medium text-gray-900">Rol</th>
+          <th scope="col" class="px-2 py-4 font-medium text-gray-900">
+            Estatus
+          </th>
+          <th scope="col" class="px-3 py-4 font-medium text-gray-900"></th>
+          <th scope="col" class="px-3 py-4 font-medium text-gray-900"></th>
+        </tr>
+      </thead>
+      <tbody
+        class="divide-y divide-gray-100 border-t text-left border-gray-100"
+      >
+        <tr class="hover:bg-gray-50" *ngFor="let c of usuarios">
+          <td class="px-2 py-4">{{ c.id }}</td>
 
-            <td class="px-6 py-2" *ngIf="user?.rol_id == 1 || user?.rol_id == 2">
+          <th class="flex gap-3 px-2 py-4 font-normal text-gray-900">
+            <div class="relative h-10 w-10">
+              <img
+                class="h-full w-full rounded-full object-cover object-center"
+                src="https://yt3.googleusercontent.com/brn3tW_hQqyc_P08PufgnGZMio-kjFE2tbSp5jDDdMI7V_q-cyqh7wEK2L2Bt3NEXs083Zt2=s900-c-k-c0x00ffffff-no-rj"
+                alt=""
+              />
+              <span
+                class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"
+              ></span>
+            </div>
+            <div class="text-sm">
+              <div class="font-medium text-gray-700">{{ c.name }}</div>
+              <div class="text-gray-400">
+                {{ c.ap_paterno }} {{ c.ap_materno }}
+              </div>
+            </div>
+          </th>
+
+          <td class="px-3 py-4">{{ c.telefono }}</td>
+          <td class="px-3 py-4">{{ c.email }}</td>
+          <td class="px-3 py-4">{{ c.role }}</td>
+          <td class="px-2 py-4">{{ c.estado }}</td>
+          <td class="px-3 py-4">
+            <div class="flex justify-end gap-4">
               <a
+                x-data="{ tooltip: 'Edite' }"
                 routerLink="edit/{{ c.id }}"
                 routerLinkActive="active"
                 ariaCurrentWhenActive="page"
-                >Edit</a
               >
-            </td>
-            <td *ngIf="user?.rol_id == 1" class="px-8 py-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                  />
+                </svg>
+              </a>
+            </div>
+          </td>
+          <td>
+            <div class="flex justify-end gap-4">
               <a
-                routerLink="editRole/{{ c.id }}"
+                routerLink="delete/{{ c.id }}"
                 routerLinkActive="active"
                 ariaCurrentWhenActive="page"
-                >Edit Rol</a
               >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-
-<router-outlet></router-outlet>

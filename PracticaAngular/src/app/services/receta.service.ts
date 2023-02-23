@@ -37,7 +37,7 @@ export class RecetaService {
     return this.http.get<Receta[]>(this.obtenerRecetas).pipe(retry(3), catchError(this.handleError))
   }
 
-  getOneReceta(id: number): Observable<Receta[]> {
+  getOneReceta(id: number): Observable<Receta> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.mytoken}`
     });
@@ -46,7 +46,7 @@ export class RecetaService {
       headers: headers
     };
 
-    return this.http.get<Receta[]>(this.obtenerReceta + id).pipe(retry(3), catchError(this.handleError))
+    return this.http.get<Receta>(this.obtenerReceta + id).pipe(retry(3), catchError(this.handleError))
   }
 
   getChefs(): Observable<Receta[]> {

@@ -14,8 +14,8 @@ import { Location } from '@angular/common';
 })
 export class ObjetoDeleteComponent {
   form: FormGroup;
-  objeto2?: Objeto;
-  objeto: Objeto = { id: 0, rareza:0, limiteBolsa: 0, valor: 0, nombre:'',descripcion:''};
+
+  objeto?: Objeto;
   id: number = 0;
   nombre: string = '';
   suscription?: Subscription;
@@ -23,7 +23,6 @@ export class ObjetoDeleteComponent {
   constructor(private route: ActivatedRoute, private objetoService: ObjetoService, private fb: FormBuilder, private location: Location) {
     this.form = this.fb.group({
       id: [this.id, Validators.required],
-      nombre: [this.nombre, Validators.required]
     });
   }
 
@@ -37,12 +36,11 @@ export class ObjetoDeleteComponent {
   }
 
   getOneObjeto(id: number) {
-    this.objetoService.getOneObjeto(id).subscribe((data: Objeto[]) => {
-      this.objeto2 = data[0];
+    this.objetoService.getOneObjeto(id).subscribe((data: Objeto) => {
+      this.objeto = data;
       this.form.patchValue({
-        id: this.objeto2?.id,
-        nombre: this.objeto2?.nombre,
-      })
+        id: this.objeto?.id,
+      });
     });
   }
   OnSubmit(values: Objeto) {

@@ -13,16 +13,16 @@ import { Location } from '@angular/common';
   templateUrl: './mapa-form-edit.component.html',
   styleUrls: ['./mapa-form-edit.component.css']
 })
-export class MapaFormEditComponent implements OnInit{
+export class MapaFormEditComponent implements OnInit {
   form: FormGroup;
-  mapa2?: Mapa;
+  mapa?: Mapa;
 
-  suscription?:Subscription;
-  id:number = 0;
+  suscription?: Subscription;
+  id: number = 0;
   constructor(private route: ActivatedRoute,
     private mapaService: MapaService,
     location: Location,
-    private fb: FormBuilder){
+    private fb: FormBuilder) {
     this.form = this.fb.group({
       id: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -40,28 +40,27 @@ export class MapaFormEditComponent implements OnInit{
     );
     console.log("ngOnInit");
   }
-  ngOnDestroy():void {
+  ngOnDestroy(): void {
     this.suscription?.unsubscribe();
     console.log('Se destruyó el componente');
   }
 
-  getOneMapa(id : number){
-    this.mapaService.getOneMapa(id).subscribe((data: Mapa[]) => {
-      this.mapa2 = data[0];
+  getOneMapa(id: number) {
+    this.mapaService.getOneMapa(id).subscribe((data: Mapa) => {
+      this.mapa = data;
       this.form.patchValue({
-        id: this.mapa2?.id,
-        nombre: this.mapa2?.nombre,
-        descripcion: this.mapa2?.descripcion,
-        totalZonas: this.mapa2?.totalZonas,
-      })
+        id: this.mapa.id,
+        nombre: this.mapa.nombre,
+        descripcion: this.mapa.descripcion,
+        totalZonas: this.mapa.totalZonas,
+      });
     });
-
   }
-    OnSubmit(values: Mapa) {
+  OnSubmit(values: Mapa) {
     this.mapaService.updateMapa(values).subscribe();
     this.form.reset();
   }
-  goBack(){
+  goBack() {
 
   }
 }

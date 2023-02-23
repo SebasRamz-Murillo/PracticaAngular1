@@ -14,10 +14,9 @@ import { Location } from '@angular/common';
 })
 export class IngredienteDeleteComponent {
   form: FormGroup;
-  ingrediente2?: Ingrediente;
   suscription?: Subscription;
   id: number = 0;
-  ingrediente: Ingrediente = { id: 0, nombre: '', tipo: '', cantidad: 0};
+  ingrediente?: Ingrediente;
 
   constructor(private route: ActivatedRoute,
     private ingredienteService: IngredienteService,
@@ -25,9 +24,6 @@ export class IngredienteDeleteComponent {
     private location: Location) {
     this.form = this.fb.group({
       id: [this.id, Validators.required],
-      nombre: [this.ingrediente.nombre, Validators.required],
-      tipo: [this.ingrediente.tipo, Validators.required],
-      cantidad: [this.ingrediente.cantidad, Validators.required]
     });
     }
     ngOnInit(): void {
@@ -38,11 +34,10 @@ export class IngredienteDeleteComponent {
       });
     }
     getOneIngrediente(id: number) {
-      this.ingredienteService.getOneIngrediente(id).subscribe((data: Ingrediente[]) => {
-        this.ingrediente2 = data[0];
+      this.ingredienteService.getOneIngrediente(id).subscribe((data: Ingrediente) => {
+        this.ingrediente = data;
         this.form.patchValue({
-          id: this.ingrediente2?.id,
-          nombre: this.ingrediente2?.nombre,
+          id: this.ingrediente?.id,
         })
       });
     }

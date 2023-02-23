@@ -1,25 +1,31 @@
-<div class="pt-36"></div>
-<div class="shadow-xl pt-10 text-3xl p-5" style="margin: auto; width: 50%">
-  <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
-  <h1 class="text-center">
-    ¿Estas seguro de Eliminar el Ingrediente <br><input type="text" formControlName="nombre" style="border: none; width: 20%;" class="text-3xl">?,Esta accion no se puede
-    deshacer!
-  </h1>
 
-    <input type="number" formControlName="id" hidden>
 
-  <div class="pl-56 pt-5"><button
-      type="submit"
-      class=" text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-    >
-      Eliminar
-    </button>
-    <button
-      type="button"
-      class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-    >
-      <a routerLink="/ingredientes" routerLinkActive="active" ariaCurrentWhenActive="page">Regresar</a>
-    </button>
+<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+  <div class="p-6 bg-white rounded-md shadow-md">
+    <h1 class="text-2xl font-bold mb-6">
+      ¿Estás seguro que deseas eliminar la receta {{ingrediente?.nombre}}?
+    </h1>
+    <p class="mb-6">Esta acción no se puede deshacer.</p>
+    <div class="flex justify-end space-x-2">
+      <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+        <input type="number" formControlName="id" hidden="true"/>
+
+        <button
+          class="flex-shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded"
+          type="submit"
+        >
+          Eliminar
+        </button>
+      </form>
+      <button
+        routerLink="/ingredientes"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="flex-shrink-0 bg-gray-400 hover:bg-gray-500 border-gray-400 hover:border-gray-500 text-sm border-4 text-white py-1 px-2 rounded"
+        type="button"
+      >
+        Cancelar
+      </button>
+    </div>
   </div>
-</form>
 </div>

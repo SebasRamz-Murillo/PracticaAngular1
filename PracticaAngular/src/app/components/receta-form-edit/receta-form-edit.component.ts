@@ -16,10 +16,9 @@ import { RecetaService } from 'src/app/services/receta.service';
 export class RecetaFormEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
   chef: Receta[] = [];
-  receta2?: Receta;
   suscription?: Subscription;
   id: number = 0;
-  receta = { id: 0, nombre: '', duracion: '', preparacion: '', chef: '' };
+  receta?: Receta;
 
   constructor(private route: ActivatedRoute,
     private recetaService: RecetaService,
@@ -51,15 +50,15 @@ export class RecetaFormEditComponent implements OnInit, OnDestroy {
   }
 
   getOneReceta(id: number) {
-    this.recetaService.getOneReceta(id).subscribe((data: Receta[]) => {
-      this.receta2 = data[0];
+    this.recetaService.getOneReceta(id).subscribe((data: Receta) => {
+      this.receta = data;
       this.form.patchValue({
-        id: this.receta2?.id,
-        nombre: this.receta2?.nombre,
-        duracion: this.receta2?.duracion,
-        preparacion: this.receta2?.preparacion,
-        chef: this.receta2?.chef
-      })
+        id: this.receta?.id,
+        nombre: this.receta?.nombre,
+        duracion: this.receta?.duracion,
+        preparacion: this.receta?.preparacion,
+        chef: this.receta?.chef
+      });
     });
   }
   OnSubmit(values: Receta) {

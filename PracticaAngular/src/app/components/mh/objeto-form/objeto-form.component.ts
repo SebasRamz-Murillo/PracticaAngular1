@@ -33,6 +33,5 @@ export class ObjetoFormComponent {
   OnSubmit(values: Objeto) {
     this.objetoService.addObjeto(values).subscribe();
     this.form.reset();
-    this.location.back();
   }
 }

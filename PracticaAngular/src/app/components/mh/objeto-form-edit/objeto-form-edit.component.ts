@@ -15,10 +15,10 @@ import { Location } from '@angular/common';
 })
 export class ObjetoFormEditComponent implements OnInit{
   form: FormGroup;
-  objeto2?: Objeto;
-
+  objeto?: Objeto;
   suscription?:Subscription;
   id:number = 0;
+
   constructor(private route: ActivatedRoute,
     private objetoService: ObjetoService,
     location: Location,
@@ -47,18 +47,17 @@ export class ObjetoFormEditComponent implements OnInit{
     console.log('Se destruyó el componente');
   }
   getOneObjeto(id : number){
-    this.objetoService.getOneObjeto(id).subscribe((data: Objeto[]) => {
-      this.objeto2 = data[0];
+    this.objetoService.getOneObjeto(id).subscribe((data: Objeto) => {
+      this.objeto = data;
       this.form.patchValue({
-        id: this.objeto2?.id,
-        nombre: this.objeto2?.nombre,
-        rareza: this.objeto2?.rareza,
-        limiteBolsa: this.objeto2?.limiteBolsa,
-        valor: this.objeto2?.valor,
-        descripcion: this.objeto2?.descripcion
-      })
+        id: this.objeto?.id,
+        nombre: this.objeto?.nombre,
+        rareza: this.objeto?.rareza,
+        limiteBolsa: this.objeto?.limiteBolsa,
+        valor: this.objeto?.valor,
+        descripcion: this.objeto?.descripcion,
     });
-
+    });
   }
     OnSubmit(values: Objeto) {
     this.objetoService.updateObjeto(values).subscribe();

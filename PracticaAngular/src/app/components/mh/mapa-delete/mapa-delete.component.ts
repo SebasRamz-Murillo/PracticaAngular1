@@ -14,8 +14,7 @@ import { Location } from '@angular/common';
 })
 export class MapaDeleteComponent {
   form: FormGroup;
-  mapa2?: Mapa;
-  mapa: Mapa = { id: 0, totalZonas:0, nombre: '', descripcion:''};
+  mapa?: Mapa;
   id: number = 0;
   nombre: string = '';
   suscription?: Subscription;
@@ -23,13 +22,11 @@ export class MapaDeleteComponent {
   constructor(private route: ActivatedRoute, private mapaService: MapaService, private fb: FormBuilder, private location: Location) {
     this.form = this.fb.group({
       id: [this.id, Validators.required],
-      nombre: [this.nombre, Validators.required]
     });
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.nombre = this.route.snapshot.params['nombre'];
     this.getOneMapa(this.id);
     this.suscription = this.mapaService.get_refresh$().subscribe(() => {
       this.getOneMapa(this.id);
@@ -37,12 +34,11 @@ export class MapaDeleteComponent {
   }
 
   getOneMapa(id: number) {
-    this.mapaService.getOneMapa(id).subscribe((data: Mapa[]) => {
-      this.mapa2 = data[0];
+    this.mapaService.getOneMapa(id).subscribe((data: Mapa) => {
+      this.mapa = data;
       this.form.patchValue({
-        id: this.mapa2?.id,
-        nombre: this.mapa2?.nombre,
-      })
+        id: this.mapa.id,
+      });
     });
   }
   OnSubmit(values: Mapa) {

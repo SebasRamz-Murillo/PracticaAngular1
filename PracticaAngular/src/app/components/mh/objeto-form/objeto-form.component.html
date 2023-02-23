@@ -1,9 +1,10 @@
 <div class="formGroup">
   <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
-    <div class="mb-6" style="width: 50%; margin: auto">
+    <h1 class="text-3xl text-center">Nuevo objeto</h1>
+    <div id="input" class="flex flex-col w-full my-5">
       <label
         for="nombre"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        class="block mb text-sm font-medium text-gray-900 dark:text-white"
         >Nombre</label
       >
       <input
@@ -11,41 +12,42 @@
         formControlName="nombre"
         id="nombre"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Espada"
+        placeholder="Hierba"
         required
       />
       <p
-        *ngIf="form.get('nombre')?.invalid && form.get('nombre')!.touched"
+        *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched"
         class="text-red-500 text-xs italic"
       >
         El nombre es obligatorio
       </p>
     </div>
-
-
-    <div class="mb-6" style="width: 50%; margin: auto">
+    <div id="input" class="flex flex-col w-full my-5">
       <label
         for="app_paterno"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Breve descripcion</label
+        >Descripcion</label
       >
       <input
         type="text"
         formControlName="descripcion"
         id="descripcion"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Potente"
+        placeholder="Hieba curativa"
         required
       />
       <p
-        *ngIf="form.get('ap_paterno')?.invalid"
+        *ngIf="
+          form.get('descripcion')!.invalid &&
+          form.get('descripcion')!.touched!
+        "
         class="text-red-500 text-xs italic"
       >
         La descripcion es obligatoria
       </p>
     </div>
 
-    <div class="mb-6" style="width: 50%; margin: auto">
+    <div id="input" class="flex flex-col w-full my-5">
       <label
         for="rareza"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -63,19 +65,26 @@
         required
       />
 
-      <p *ngIf="form.get('rareza')!.invalid && form.get('rareza')!.touched" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="form.get('rareza')!.invalid && form.get('rareza')!.touched"
+        class="text-red-500 text-xs italic"
+      >
         La rareza en el objeto es obligatorio
       </p>
-      <p *ngIf="form.get('rareza')?.errors?.['min']" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="form.get('rareza')?.errors?.['min']"
+        class="text-red-500 text-xs italic"
+      >
         El valor debe ser mayor o igual a 1
       </p>
-      <p *ngIf="form.get('rareza')?.errors?.['max']" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="form.get('rareza')?.errors?.['max']"
+        class="text-red-500 text-xs italic"
+      >
         El valor debe ser menor o igual a 10
       </p>
-
     </div>
-
-    <div class="mb-6" style="width: 50%; margin: auto">
+    <div id="input" class="flex flex-col w-full my-5">
       <label
         for="limiteBolsa"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -93,15 +102,23 @@
         required
       />
 
-      <p *ngIf="form.get('limiteBolsa')!.invalid && form.get('limiteBolsa')!.touched" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="
+          form.get('limiteBolsa')!.invalid &&
+          form.get('limiteBolsa')!.touched
+        "
+        class="text-red-500 text-xs italic"
+      >
         El limite en bolsa del objeto es obligatorio
       </p>
-      <p *ngIf="form.get('limiteBolsa')?.invalid && form.get('limiteBolsa')?.errors?.['min']" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="form.get('limiteBolsa')?.invalid && form.get('limiteBolsa')?.errors?.['min']"
+        class="text-red-500 text-xs italic"
+      >
         El valor debe ser mayor o igual a 1
       </p>
     </div>
-
-    <div class="mb-6" style="width: 50%; margin: auto">
+    <div id="input" class="flex flex-col w-full my-5">
       <label
         for="valor"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -119,22 +136,29 @@
         required
       />
 
-      <p *ngIf="form.get('valor')?.invalid && form.get('valor')!.touched" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="form.get('valor')?.invalid && form.get('valor')!.touched"
+        class="text-red-500 text-xs italic"
+      >
         El valor del objeto es obligatorio
       </p>
-      <p *ngIf="form.get('valor')?.invalid && form.get('valor')?.errors?.['min']" class="text-red-500 text-xs italic">
+      <p
+        *ngIf="form.get('valor')?.invalid && form.get('valor')?.errors?.['min']"
+        class="text-red-500 text-xs italic"
+      >
         El valor debe ser mayor o igual a 1
       </p>
     </div>
+    <div id="input" class="flex flex-col w-full my-5"></div>
 
-    <div
-      class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
-    >
+    <div id="button" class="flex flex-col w-full my-5">
       <button
         *ngIf="!form.invalid"
+        routerLink="/objeto"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
         type="submit"
         class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-        data-modal-hide="agregrObjeto"
         [disabled]="form.invalid"
       >
         Agregar Objeto
@@ -143,15 +167,17 @@
         *ngIf="form.invalid"
         type="submit"
         class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-        data-modal-hide="agregrObjeto"
         [disabled]="form.invalid"
       >
         Completa los campos
       </button>
-      <button
-        type="button" routerLink="/objeto" routerLinkActive="active" ariaCurrentWhenActive="page"
-        class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Regresar</button>
     </div>
   </form>
 </div>
+
+<!-- component -->
+
+
+
+
 

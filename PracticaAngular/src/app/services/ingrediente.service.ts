@@ -50,7 +50,7 @@ export class IngredienteService {
     }
     ));
   }
-  getOneIngrediente(id:number): Observable<Ingrediente[]> {
+  getOneIngrediente(id:number): Observable<Ingrediente> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.mytoken}`
     });
@@ -59,7 +59,7 @@ export class IngredienteService {
       headers: headers
     };
 
-    return this.http.get<Ingrediente[]>(this.obtenerIngrediente+id).pipe(retry(3), catchError(this.handleError))
+    return this.http.get<Ingrediente>(this.obtenerIngrediente+id).pipe(retry(3), catchError(this.handleError))
   }
 
   updateIngrediente(ingrediente: Ingrediente): Observable<Ingrediente> {

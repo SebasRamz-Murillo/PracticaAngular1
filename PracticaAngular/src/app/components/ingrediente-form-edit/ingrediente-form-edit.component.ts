@@ -16,10 +16,10 @@ import { Location } from '@angular/common';
 
 export class IngredienteFormEditComponent {
   form: FormGroup;
-  ingrediente2?: Ingrediente;
+
   suscription?: Subscription;
-  id: number = 0;
-  ingrediente = { id: 0, nombre: '', tipo: '', cantidad: 0 };
+  id: number = this.route.snapshot.params['id'];
+  ingrediente?: Ingrediente;
 
   constructor(private route: ActivatedRoute,
     private ingredienteService: IngredienteService,
@@ -34,22 +34,20 @@ export class IngredienteFormEditComponent {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
     this.getOneIngrediente(this.id);
     this.suscription = this.ingredienteService.get_refresh$().subscribe(() => {
       this.getOneIngrediente(this.id);
-    }
-    );
+    });
   }
 
   getOneIngrediente(id: number) {
-    this.ingredienteService.getOneIngrediente(id).subscribe((data: Ingrediente[]) => {
-      this.ingrediente2 = data[0];
+    this.ingredienteService.getOneIngrediente(id).subscribe((data: Ingrediente) => {
+      this.ingrediente = data;
       this.form.patchValue({
-        id: this.ingrediente2?.id,
-        nombre: this.ingrediente2?.nombre,
-        tipo: this.ingrediente2?.tipo,
-        cantidad: this.ingrediente2?.cantidad
+        id: this.ingrediente?.id,
+        nombre: this.ingrediente?.nombre,
+        tipo: this.ingrediente?.tipo,
+        cantidad: this.ingrediente?.cantidad
       })
     });
   }

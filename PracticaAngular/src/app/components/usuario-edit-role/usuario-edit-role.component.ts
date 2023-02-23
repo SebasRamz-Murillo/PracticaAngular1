@@ -15,9 +15,8 @@ import { Location } from '@angular/common';
 })
 export class UsuarioEditRoleComponent implements OnInit {
   form: FormGroup;
-  usuario2?: Usuario;
 
-  usuario: Usuario = { id: 0, name: '', ap_paterno: '', ap_materno: '', email: '', telefono: "", codigo: 0, activo: false, rol_id: 0, password: '', ruta: '', token: '', estado: '', role: '', boton: '' };
+  usuario?: Usuario;
   suscription?: Subscription;
   id: number = 0;
 
@@ -46,11 +45,11 @@ export class UsuarioEditRoleComponent implements OnInit {
   }
 
   getOneUsuario(id: number): void {
-    this.usuarioService.getOneUsuario(id).subscribe((data: Usuario[]) => {
-      this.usuario2 = data[0];
+    this.usuarioService.getOneUsuario(id).subscribe((data: Usuario) => {
+      this.usuario = data;
       this.form.patchValue({
-        id: this.usuario2?.id,
-        rol_id: this.usuario2?.rol_id
+        id: this.usuario.id,
+        rol_id: this.usuario.rol_id,
       });
     });
   }

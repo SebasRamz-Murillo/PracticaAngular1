@@ -14,17 +14,17 @@ import { RecetaService } from 'src/app/services/receta.service';
 })
 export class RecetaDeleteComponent {
   form: FormGroup;
-  receta2?: Receta;
+
   suscription?: Subscription;
   id: number = 0;
-  receta: Receta = { id: 0, nombre: '', duracion: '', preparacion: '', chef: 0};
+  receta?: Receta;
   constructor(private route: ActivatedRoute,
     private recetaService: RecetaService,
     private fb: FormBuilder,
     private location: Location){
       this.form = this.fb.group({
         id: ['', Validators.required],
-        nombre: ['', Validators.required]
+
       })
     }
     ngOnInit(): void {
@@ -35,11 +35,10 @@ export class RecetaDeleteComponent {
       });
     }
     getOneReceta(id: number) {
-      this.recetaService.getOneReceta(id).subscribe((data: Receta[]) => {
-        this.receta2 = data[0];
+      this.recetaService.getOneReceta(id).subscribe((data: Receta) => {
+        this.receta = data;
         this.form.patchValue({
-          id: this.receta2?.id,
-          nombre: this.receta2?.nombre,
+          id: this.receta?.id,
         })
       });
     }

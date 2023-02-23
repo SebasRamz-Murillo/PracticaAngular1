@@ -50,7 +50,7 @@ export class ObjetoService {
     ));
   }
 
-  getOneObjeto(id: number): Observable<Objeto[]> {
+  getOneObjeto(id: number): Observable<Objeto> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.mytoken}`
     });
@@ -59,7 +59,7 @@ export class ObjetoService {
       headers: headers
     };
 
-    return this.http.get<Objeto[]>(this.obtenerObjeto + id).pipe(retry(3), catchError(this.handleError))
+    return this.http.get<Objeto>(this.obtenerObjeto + id).pipe(retry(3), catchError(this.handleError))
   }
 
   updateObjeto(objeto: Objeto): Observable<Objeto> {
