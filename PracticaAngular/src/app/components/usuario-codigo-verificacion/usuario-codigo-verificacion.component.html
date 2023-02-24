@@ -1,3 +1,5 @@
+
+
 <div style="margin: auto;width: 30%;"
   id="alert-additional-content-1"
   class="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
@@ -49,15 +51,17 @@
             >Ingresa el codigo</label
           >
           <input
-            type="text"
+            type="number"
             formControlName="codigo"
             id="codigo"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="1234"
+            min="1000"
+            max="9999"
             required
           />
           <p
-            *ngIf="form.get('codigo')?.invalid"
+            *ngIf="form.get('codigo')?.invalid && form.get('codigo')?.touched"
             class="text-red-500 text-xs italic"
           >
             El codigo es obligatorio

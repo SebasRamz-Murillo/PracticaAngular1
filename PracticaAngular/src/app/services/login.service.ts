@@ -21,7 +21,7 @@ export class LoginService {
   private infoUsuario = this.APIURL + '/info'
   private actualizarUsuario = this.APIURL + '/update'
   private verificacion = environment.URL_API + '/verify'
-  private codigo = environment.URL_SIGNED
+  private reenviarEmail = this.APIURL + '/recuperarCuenta'
 
 
   constructor(private http: HttpClient) { }
@@ -85,7 +85,13 @@ export class LoginService {
     ));
   }
 
+  reenviarCorreo(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.reenviarEmail, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
 
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status === 400) {
       console.error('An error occurred:', error.error);
