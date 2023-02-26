@@ -22,6 +22,7 @@ export class LoginService {
   private actualizarUsuario = this.APIURL + '/update'
   private verificacion = environment.URL_API + '/verify'
   private reenviarEmail = this.APIURL + '/recuperarCuenta'
+  private cambiarPassword = this.APIURL + '/cambiarPassword'
 
 
   constructor(private http: HttpClient) { }
@@ -99,5 +100,12 @@ export class LoginService {
       console.error('El backend devolvió el código ${error.status}, el cuerpo era:', error.error)
     }
     return throwError(() => new Error('Algo malo sucedió; por favor, inténtelo de nuevo más tarde.'));
+  }
+  cambiarContraseña(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.cambiarPassword, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
+
   }
 }

@@ -56,6 +56,9 @@ import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-
 import { UsuarioDesactivarComponent } from './components/usuario-edit/usuario-desactivar/usuario-desactivar.component';
 import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
 import { ReenviarCodigoComponent } from './components/reenviar-codigo/reenviar-codigo.component';
+import { CodigoInvalidoComponent } from './components/codigo-invalido/codigo-invalido.component';
+import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
+import { PasswordInvalidComponent } from './components/password-invalid/password-invalid.component';
 
 
 @NgModule({
@@ -109,7 +112,10 @@ import { ReenviarCodigoComponent } from './components/reenviar-codigo/reenviar-c
     InfoCorreoComponent,
     InfoCuentaActivaComponent,
     LoginAlternoComponent,
-    ReenviarCodigoComponent
+    ReenviarCodigoComponent,
+    CodigoInvalidoComponent,
+    CambiarPasswordComponent,
+    PasswordInvalidComponent
   ],
   imports: [
     BrowserModule,

@@ -50,6 +50,10 @@ import { InfoCorreoComponent } from './components/info-correo/info-correo.compon
 import { ValidarRolUsuarioGuard } from './guards/validar-rol-usuario.guard';
 import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
 import { ReenviarCodigoComponent } from './components/reenviar-codigo/reenviar-codigo.component';
+import { CodigoInvalidoComponent } from './components/codigo-invalido/codigo-invalido.component';
+import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
+import { ValidarContraseñaGuard } from './validar-contraseña.guard';
+import { PasswordInvalidComponent } from './components/password-invalid/password-invalid.component';
 
 const routes: Routes = [
 
@@ -58,14 +62,17 @@ const routes: Routes = [
   { path: 'sesionExpirada', component: PermisosSesionExpiradaComponent },
   { path: 'cuentaDesactivada', component: PermisosCuentaDesactivadaComponent },
   { path: 'idInvalido', component: PermisoValidarIDComponent },
+  { path: 'passwordInvalid', component: PasswordInvalidComponent },
+  { path: 'codigoInvalido', component: CodigoInvalidoComponent },
   { path: 'cuentaActiva', component: InfoCuentaActivaComponent },
   { path: 'correo', component: InfoCorreoComponent },
 
   { path: 'registro', component: UsuarioRegistroComponent },
   { path: 'registro/verificar/:url', component: UsuarioCodigoVerificacionComponent },
   { path: 'recuperarCuenta', component: ReenviarCodigoComponent },
+  { path: 'cambiarContraseña', component: CambiarPasswordComponent },
   //Verificar si es usuario o administrador
-  { path: 'chef', component: ChefComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard] },
+  { path: 'chef', component: ChefComponent, canActivate: [ValidarContraseñaGuard,ValidarRolGuard, ValidarCuentaGuard] },
   { path: 'chef/create', component: ChefFormComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard] },
   { path: 'chef/edit/:id', component: ChefFormEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard, ValidarTokenGuard] },
   { path: 'chef/delete/:id', component: ChefDeleteComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard, ValidarTokenGuard] },

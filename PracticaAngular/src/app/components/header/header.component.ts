@@ -42,6 +42,7 @@ export class HeaderComponent {
 
   OnSubmit(values: Usuario) {
     this.loginService.logout(values).subscribe();
+    localStorage.removeItem('token');
     this.form.reset();
     this.router.navigate(['']);
   }

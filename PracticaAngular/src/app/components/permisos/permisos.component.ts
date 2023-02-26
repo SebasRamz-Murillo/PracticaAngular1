@@ -9,8 +9,10 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./permisos.component.css']
 })
 export class PermisosComponent {
-  constructor(private location: Router) { }
+  constructor(private router: Router,
+    private location: Location) { }
   ngOnInit() {
-    setTimeout(() => {this.location.navigate(['chef'])},5000);
+    //setTimeout(() => {this.router.navigate(['chef'])},5000);
+    this.location.back();
   }
 }

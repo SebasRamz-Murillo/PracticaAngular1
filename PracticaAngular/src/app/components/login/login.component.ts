@@ -13,17 +13,23 @@ import { of } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   usuario?: Usuario;
   form: FormGroup;
+
+
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router) {
+    private router: Router,
+   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+  ngOnInit(): void {
+    const contraseñaInvalda = localStorage.getItem('contraseñaInvalda');
   }
   OnSubmit(values: Usuario) {
     this.loginService.login(values).pipe(
@@ -42,6 +48,7 @@ export class LoginComponent {
       }
     });
     this.form.reset();
+    localStorage.setItem('password', values.password);
   }
   reenviarCorreo() {
     this.router.navigate(['/recuperarCuenta']);

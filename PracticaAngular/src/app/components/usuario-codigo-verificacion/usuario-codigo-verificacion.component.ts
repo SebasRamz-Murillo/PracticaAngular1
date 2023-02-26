@@ -20,13 +20,17 @@ export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
   form: FormGroup;
   usuario: Usuario[] = [];
   suscription?: Subscription;
+  sss: any;
+  alerta: boolean = false;
+  menasjeError: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
     private location: Location,
-    private loginService: LoginService
+    private loginService: LoginService,
+
   ) {
     this.form = this.fb.group({
       codigo: ['', Validators.required],
@@ -34,6 +38,8 @@ export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.url = this.route.snapshot.params['url'];
+    this.menasjeError = this.route.snapshot.params['error'];
+
   }
   ngOnDestroy(): void {
     this.suscription?.unsubscribe();
@@ -43,9 +49,20 @@ export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
     this.route
     environment.URL_SIGNED = this.url;
     console.log(environment.URL_SIGNED);
-    this.router.navigate(['cuentaActiva']);
-    this.loginService.enviarCodigo(values,url).subscribe();
+    this.loginService.enviarCodigo(values, url).subscribe(
+      data => {
+        // El código es correcto, realizar acción correspondiente
+        console.log(data);
+        this.router.navigate(['cuentaActiva']);
+      },
+      error => {
+        // El código es incorrecto, realizar acción correspondiente
+        console.error('Ha ocurrido un error:', error);
+        this.router.navigate(['codigoInvalido']);
+      }
+    );
     this.form.reset();
+
   }
 
 }
