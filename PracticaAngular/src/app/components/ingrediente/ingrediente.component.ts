@@ -13,7 +13,7 @@ import { Usuario } from 'src/app/models/usuario.model';
   templateUrl: './ingrediente.component.html',
   styleUrls: ['./ingrediente.component.css']
 })
-export class IngredienteComponent implements OnInit, OnDestroy {
+export class IngredienteComponent implements OnInit {
   ingrediente: Ingrediente[] = [];
   suscription?: Subscription;
   usuario?: Usuario;
@@ -31,10 +31,7 @@ export class IngredienteComponent implements OnInit, OnDestroy {
       this.getIngredientes();
     });
   }
-  ngOnDestroy(): void {
-    this.suscription?.unsubscribe();
-    console.log('Se destruyó el componente');
-  }
+
   //Metodos
   getIngredientes() {
     this.ingredienteService.getIngredientes().subscribe(data => this.ingrediente = data);

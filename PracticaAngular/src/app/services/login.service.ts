@@ -21,7 +21,8 @@ export class LoginService {
   private infoUsuario = this.APIURL + '/info'
   private actualizarUsuario = this.APIURL + '/update'
   private verificacion = environment.URL_API + '/verify'
-  private codigo = environment.URL_SIGNED
+  private reenviarEmail = this.APIURL + '/recuperarCuenta'
+  private cambiarPassword = this.APIURL + '/cambiarPassword'
 
 
   constructor(private http: HttpClient) { }
@@ -85,7 +86,13 @@ export class LoginService {
     ));
   }
 
+  reenviarCorreo(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.reenviarEmail, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
 
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status === 400) {
       console.error('An error occurred:', error.error);
@@ -93,5 +100,12 @@ export class LoginService {
       console.error('El backend devolvió el código ${error.status}, el cuerpo era:', error.error)
     }
     return throwError(() => new Error('Algo malo sucedió; por favor, inténtelo de nuevo más tarde.'));
+  }
+  cambiarContraseña(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.cambiarPassword, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+      this._refresh$.next();
+    }
+    ));
+
   }
 }

@@ -14,7 +14,7 @@ export class IngredienteService {
   APIURL = environment.URL_API;
   private _refresh$ = new Subject<void>();
   private obtenerIngredientes = this.APIURL+'/ingrediente/info';
-  private crearIngrediente = this.APIURL+'/ingrediente';
+  private crearIngrediente = this.APIURL+'/ingrediente/';
   private obtenerIngrediente = this.APIURL+'/ingrediente/info/';
   private modificarIngrediente = this.APIURL+'/ingrediente/update/';
   private eliminarIngrediente = this.APIURL+'/ingrediente/delete/';
