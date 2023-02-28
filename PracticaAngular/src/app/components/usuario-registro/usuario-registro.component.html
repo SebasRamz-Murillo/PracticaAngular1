@@ -55,7 +55,7 @@
           *ngIf="form.get('password')!.invalid && form.get('password')!.touched"
           class="text-red-500 text-xs italic"
         >
-          La password es obligatorio
+          La password es obligatorio y debe ser mayor a 9 caracteres
         </p>
         <!-- Nombre Input -->
         <label
@@ -151,7 +151,7 @@
         </p>
         <!-- Auth Buttton -->
         <button
-          *ngIf="form.valid"
+          *ngIf="form.valid && form.get('password')?.value.length >= 9 "
           type="submit"
           class="w-full py-3 mt-10 bg-green-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-green-700 hover:shadow-none"
         >
@@ -165,9 +165,7 @@
           Enviar
         </button>
         <button
-          routerLink=""
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
+
           type="button"
           class="w-full py-3 mt-5 bg-gray-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none"
         >

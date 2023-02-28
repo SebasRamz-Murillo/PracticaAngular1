@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
 import { OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-reenviar-codigo',
@@ -26,9 +27,12 @@ export class ReenviarCodigoComponent {
 
   OnSubmit(values: Usuario) {
     this.loginService.reenviarCorreo(values).subscribe((response: Usuario) => {
-      localStorage.setItem('token', response.token);
+      this.router.navigate(['/correo']);
+    }), catchError((error: any) => {
+      if (error.status === 401) {
+        alert('El correo ingresado no existe');
+      }
+      return error;
     });
-    this.router.navigate(['correo']);
-
   }
 }

@@ -115,7 +115,7 @@
   </div>
 
 
-  <div
+  <div *ngIf="usuario?.rol_id == 1 || usuario?.rol_id == 2"
     class="overflow-hidden rounded-lg border pl-2 pr-2 border-gray-200 shadow-md m-5 col-start-8 col-end-12"
     style="width: 100%; margin: right"
   >

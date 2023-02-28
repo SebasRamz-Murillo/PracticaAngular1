@@ -27,20 +27,22 @@ export class ValidarCuentaGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    return this.http.get<Usuario[]>(environment.URL_API + '/usuario/info', { headers }).pipe(
+    return this.http.get<Usuario>(environment.URL_API + '/usuario/infoObjeto', { headers }).pipe(
       map((usuario) => {
-        if (usuario[0].activo == true) {
+        if (usuario.activo == true) {
+          console.log('Usuario activo');
           return true;
         } else {
           this.router.navigate(['/cuentaDesactivada']);
-          return false;
+          console.log('No tiene permisos para acceder a esta página');
         }
-      }), catchError((error: HttpErrorResponse) => {
+        return false;
+      }),
+      catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          this.router.navigate(['/sesionExpirada']);
-        } else {
+          console.log('Token no válido');
           this.router.navigate(['/error']);
+        } else {
         }
         return throwError(error.message);
       })

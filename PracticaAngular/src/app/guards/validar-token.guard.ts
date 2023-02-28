@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs'; // Agrega la importación de of
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,13 +32,13 @@ export class ValidarTokenGuard implements CanActivate {
     const httpOptions = {
       headers: headers
     };
-    return this.http.get<boolean>(environment.URL_API + '/usuario/validarToken', httpOptions).pipe(
+    return this.http.get<any>(environment.URL_API + '/usuario/validarToken', httpOptions).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.ok === false || error.status === 401 ) {
+        if (error.ok === false || error.status === 401) {
           localStorage.removeItem('token');
           console.log(error);
           console.log('Token no válido');
-          this.router.navigate(['']);
+          this.router.navigate(['sesionExpirada']);
           return of(false);
         } else {
           this.router.navigate(['/chef']);

@@ -12,7 +12,6 @@ export class PermisosComponent {
   constructor(private router: Router,
     private location: Location) { }
   ngOnInit() {
-    //setTimeout(() => {this.router.navigate(['chef'])},5000);
-    this.location.back();
+    setTimeout(() => {this.location.back();},5000);
   }
 }

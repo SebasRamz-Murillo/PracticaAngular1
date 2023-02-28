@@ -27,20 +27,22 @@ export class ValidarRolGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Usuario[]>(environment.URL_API + '/usuario/info', { headers }).pipe(
+    return this.http.get<Usuario>(environment.URL_API + '/usuario/infoObjeto', { headers }).pipe(
       map((usuario) => {
-        if (usuario[0].rol_id == 1 || usuario[0].rol_id == 2 || usuario[0].rol_id == 3) {
+        if (usuario.rol_id == 1 || usuario.rol_id == 3 || usuario.rol_id == 2) {
           return true;
+          this.router.navigate(['/chef']);
         } else {
           this.router.navigate(['/error']);
-          return false;
+          console.log('No tiene permisos para acceder a esta página');
         }
+        return false;
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
+          console.log('Token no válido');
           this.router.navigate(['/sesionExpirada']);
         } else {
-          this.router.navigate(['/error']);
         }
         return throwError(error.message);
       })

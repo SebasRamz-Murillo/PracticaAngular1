@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, min } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-   ) {
+  ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -32,23 +32,27 @@ export class LoginComponent implements OnInit {
     const contraseñaInvalda = localStorage.getItem('contraseñaInvalda');
   }
   OnSubmit(values: Usuario) {
-    this.loginService.login(values).pipe(
-      catchError((error) => {
-        // aquí puedes mostrar un mensaje de error o hacer cualquier otra acción
-        console.log('Error al iniciar sesión:', error);
-        // redirigir al usuario a la página de inicio de sesión
-        this.router.navigate(['/cuentaDesactivada']);
-        // retornar un observable vacío para evitar que la suscripción falle
-        return of(null);
-      })
-    ).subscribe((response: any) => {
-      if (response) {
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['/chef']);
-      }
-    });
-    this.form.reset();
-    localStorage.setItem('password', values.password);
+    if (this.form.valid) {
+      this.loginService.login(values).pipe().subscribe((response: any) => {
+        if (response) {
+          console.log(response);
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/chef']);
+        }
+      }, (error) => {
+        console.log(error);
+        if (error.status === 403) {
+          console.log('contraseña invalida');
+          this.router.navigate(['/passwordInvalid']);
+        } else {
+          console.log('Error al iniciar sesión');
+          this.router.navigate(['/cuentaDesactivada']);
+        }
+      });
+      this.form.reset();
+      localStorage.setItem('password', values.password);
+    }
+
   }
   reenviarCorreo() {
     this.router.navigate(['/recuperarCuenta']);
