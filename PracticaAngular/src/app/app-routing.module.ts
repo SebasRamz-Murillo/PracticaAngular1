@@ -49,6 +49,7 @@ import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-
 import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
 import { ValidarRolUsuarioGuard } from './guards/validar-rol-usuario.guard';
 import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
+import { UsuarioEditSelfComponent } from './components/usuario-edit-self/usuario-edit-self.component';
 
 const routes: Routes = [
 
@@ -103,6 +104,8 @@ const routes: Routes = [
 
   { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarRolUsuarioGuard]},
   { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
+  { path: 'usuarios/editSelf/:id', component: UsuarioEditSelfComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
+
   { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
 
   { path: '**', component: PageNoFoundComponent }

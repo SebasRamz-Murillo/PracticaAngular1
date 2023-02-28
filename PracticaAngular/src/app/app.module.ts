@@ -55,6 +55,7 @@ import { InfoCorreoComponent } from './components/info-correo/info-correo.compon
 import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
 import { UsuarioDesactivarComponent } from './components/usuario-edit/usuario-desactivar/usuario-desactivar.component';
 import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
+import { UsuarioEditSelfComponent } from './components/usuario-edit-self/usuario-edit-self.component';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { LoginAlternoComponent } from './components/login-alterno/login-alterno.
     PermisoValidarIDComponent,
     InfoCorreoComponent,
     InfoCuentaActivaComponent,
-    LoginAlternoComponent
+    LoginAlternoComponent,
+    UsuarioEditSelfComponent
   ],
   imports: [
     BrowserModule,
