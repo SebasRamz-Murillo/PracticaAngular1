@@ -113,7 +113,7 @@ import { PasswordInvalidComponent } from './components/password-invalid/password
     InfoCorreoComponent,
     InfoCuentaActivaComponent,
     LoginAlternoComponent,
-    UsuarioEditSelfComponent
+    UsuarioEditSelfComponent,
     ReenviarCodigoComponent,
     CodigoInvalidoComponent,
     CambiarPasswordComponent,
