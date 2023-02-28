@@ -97,8 +97,8 @@ const routes: Routes = [
 
   { path: 'objeto', component: ObjetoComponent, canActivate: [ValidarTokenGuard, ValidarRolGuestGuard, ValidarCuentaGuard] },
   { path: 'objeto/create', component: ObjetoFormComponent, canActivate: [ValidarTokenGuard, ValidarRolGuestGuard, ValidarCuentaGuard] },
-  { path: 'objeto/edit/:id', component: ObjetoFormEditComponent, canActivate: [ValidarTokenGuard, ValidarRolAdminUsuarioGuard, ValidarCuentaGuard,ValidarIDGuard] },
-  { path: 'objeto/delete/:id', component: ObjetoDeleteComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarCuentaGuard,ValidarIDGuard] },
+  { path: 'objeto/edit/:id', component: ObjetoFormEditComponent, canActivate: [ValidarTokenGuard, ValidarRolAdminUsuarioGuard, ValidarCuentaGuard, ValidarIDGuard] },
+  { path: 'objeto/delete/:id', component: ObjetoDeleteComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarCuentaGuard, ValidarIDGuard] },
   /*
     { path: 'zonaObjetos', component: MapaObjetoComponent },
     { path: 'zonaObjetos/create', component: ZonaObjetoFormComponent },
@@ -110,10 +110,10 @@ const routes: Routes = [
     { path: 'monstruos/edit/:id', component: MonstrousFormEditComponent },
     { path: 'monstruos/delete/:id', component: MonstrousDeleteComponent },
 
-
-  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarRolUsuarioGuard] },
-  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard, ValidarRolUsuarioGuard, ValidarTokenGuard] },
-  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard, ValidarRolUsuarioGuard, ValidarTokenGuard] },
+*/
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarCuentaGuard] },
+  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarIDGuard, ValidarCuentaGuard ] },
+  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarIDGuard, ValidarCuentaGuard] },
 
   { path: '**', component: PageNoFoundComponent }
 ];
