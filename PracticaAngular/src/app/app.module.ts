@@ -55,6 +55,7 @@ import { InfoCorreoComponent } from './components/info-correo/info-correo.compon
 import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-cuenta-activa.component';
 import { UsuarioDesactivarComponent } from './components/usuario-edit/usuario-desactivar/usuario-desactivar.component';
 import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
+import { UsuarioEditSelfComponent } from './components/usuario-edit-self/usuario-edit-self.component';
 import { ReenviarCodigoComponent } from './components/reenviar-codigo/reenviar-codigo.component';
 import { CodigoInvalidoComponent } from './components/codigo-invalido/codigo-invalido.component';
 import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
@@ -112,6 +113,7 @@ import { PasswordInvalidComponent } from './components/password-invalid/password
     InfoCorreoComponent,
     InfoCuentaActivaComponent,
     LoginAlternoComponent,
+    UsuarioEditSelfComponent
     ReenviarCodigoComponent,
     CodigoInvalidoComponent,
     CambiarPasswordComponent,

@@ -49,6 +49,7 @@ import { InfoCuentaActivaComponent } from './components/info-cuenta-activa/info-
 import { InfoCorreoComponent } from './components/info-correo/info-correo.component';
 import { ValidarRolUsuarioGuard } from './guards/validar-rol-usuario.guard';
 import { LoginAlternoComponent } from './components/login-alterno/login-alterno.component';
+import { UsuarioEditSelfComponent } from './components/usuario-edit-self/usuario-edit-self.component';
 import { ReenviarCodigoComponent } from './components/reenviar-codigo/reenviar-codigo.component';
 import { CodigoInvalidoComponent } from './components/codigo-invalido/codigo-invalido.component';
 import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
@@ -109,9 +110,11 @@ const routes: Routes = [
   { path: 'monstruos/delete/:id', component: MonstrousDeleteComponent },
 
 
-  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarRolUsuarioGuard] },
-  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard, ValidarRolUsuarioGuard, ValidarTokenGuard] },
-  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard, ValidarIDGuard, ValidarRolUsuarioGuard, ValidarTokenGuard] },
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarRolUsuarioGuard]},
+  { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
+  { path: 'usuarios/editSelf/:id', component: UsuarioEditSelfComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
+  { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarRolGuard, ValidarCuentaGuard,ValidarIDGuard,ValidarRolUsuarioGuard] },
+
 
   { path: '**', component: PageNoFoundComponent }
 ];
