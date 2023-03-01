@@ -60,11 +60,18 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.obtenerUsuario + id).pipe(retry(3), catchError(this.handleError))
   }
   updateUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(this.modificarUsuario + usuario.id, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.mytoken}`
+    });
+    const httpOptions = {
+      headers: headers
+    };
+    return this.http.put<Usuario>(this.modificarUsuario + usuario.id, usuario, httpOptions).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));
   }
+
   updateUsuarioRol(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(this.modificarUsuarioRole + usuario.id, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();

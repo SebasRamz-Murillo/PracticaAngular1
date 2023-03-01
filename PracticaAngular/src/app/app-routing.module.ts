@@ -74,7 +74,7 @@ const routes: Routes = [
   { path: 'recuperarCuenta', component: ReenviarCodigoComponent },
   { path: 'cambiarContraseña', component: CambiarPasswordComponent },
   //Verificar si es usuario o administrador
-  { path: 'chef', component: ChefComponent, canActivate: [ValidarTokenGuard, ValidarRolGuard, ValidarCuentaGuard] },
+  { path: 'chef', component: ChefComponent, canActivate: [] },
   { path: 'chef/create', component: ChefFormComponent, canActivate: [ValidarTokenGuard, ValidarRolGuard, ValidarCuentaGuard] },
   { path: 'chef/edit/:id', component: ChefFormEditComponent, canActivate: [ValidarTokenGuard, ValidarRolAdminUsuarioGuard, ValidarCuentaGuard, ValidarIDGuard] },
   { path: 'chef/delete/:id', component: ChefDeleteComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarCuentaGuard, ValidarIDGuard] },
@@ -114,6 +114,7 @@ const routes: Routes = [
   { path: 'usuarios', component: UsuarioComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarCuentaGuard] },
   { path: 'usuarios/edit/:id', component: UsuarioEditComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarIDGuard, ValidarCuentaGuard ] },
   { path: 'usuarios/editRole/:id', component: UsuarioEditRoleComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarIDGuard, ValidarCuentaGuard] },
+  { path: 'usuarios/editSelf/:id', component: UsuarioEditSelfComponent, canActivate: [ValidarTokenGuard,ValidarRolGuard , ValidarIDGuard, ValidarCuentaGuard] },
 
   { path: '**', component: PageNoFoundComponent }
 ];

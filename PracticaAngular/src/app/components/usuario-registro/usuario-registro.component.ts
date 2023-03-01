@@ -7,6 +7,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
+import { of } from 'rxjs';
 
 
 @Component({
@@ -35,9 +37,10 @@ export class UsuarioRegistroComponent {
     })
   }
   OnSubmit(values: Usuario) {
-    this.loginService.registrarUsuario(values).subscribe();
+    this.loginService.registrarUsuario(values).subscribe(
+    );
     this.form.reset();
-    this.router.navigate(['correo']);
+    this.router.navigate(['/correo'])
   }
 }
 

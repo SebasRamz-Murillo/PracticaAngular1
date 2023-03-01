@@ -37,16 +37,7 @@ export class ValidarCuentaGuard implements CanActivate {
           console.log('No tiene permisos para acceder a esta página');
         }
         return false;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          console.log('Token no válido');
-          this.router.navigate(['/error']);
-        } else {
-        }
-        return throwError(error.message);
-      })
-    );
+      }));
   }
 
 }

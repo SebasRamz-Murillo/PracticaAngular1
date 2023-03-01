@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    const contraseñaInvalda = localStorage.getItem('contraseñaInvalda');
+
   }
   OnSubmit(values: Usuario) {
     if (this.form.valid) {
@@ -38,15 +38,6 @@ export class LoginComponent implements OnInit {
           console.log(response);
           localStorage.setItem('token', response.token);
           this.router.navigate(['/chef']);
-        }
-      }, (error) => {
-        console.log(error);
-        if (error.status === 403) {
-          console.log('contraseña invalida');
-          this.router.navigate(['/passwordInvalid']);
-        } else {
-          console.log('Error al iniciar sesión');
-          this.router.navigate(['/cuentaDesactivada']);
         }
       });
       this.form.reset();

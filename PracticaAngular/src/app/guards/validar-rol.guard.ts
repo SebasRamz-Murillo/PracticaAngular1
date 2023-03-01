@@ -29,7 +29,7 @@ export class ValidarRolGuard implements CanActivate {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Usuario>(environment.URL_API + '/usuario/infoObjeto', { headers }).pipe(
       map((usuario) => {
-        if (usuario.rol_id == 1 || usuario.rol_id == 3 || usuario.rol_id == 2) {
+        if (usuario.rol_id == 1 || usuario.rol_id == 2 || usuario.rol_id == 3 ) {
           return true;
           this.router.navigate(['/chef']);
         } else {

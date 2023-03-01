@@ -74,7 +74,7 @@ export class UsuarioEditSelfComponent {
     // Obtener el valor actual del usuario2 y modificar únicamente el rol
     // Llamar al servicio de actualización de usuario con el objeto actualizado
     this.usuarioService.updateUsuario(values).subscribe();
-
+    this.location.back();
     // Resetear el formulario
     this.form.reset();
   };

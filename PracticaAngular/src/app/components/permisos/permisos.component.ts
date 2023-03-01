@@ -13,5 +13,10 @@ export class PermisosComponent {
     private location: Location) { }
   ngOnInit() {
     setTimeout(() => {this.location.back();},5000);
+    console.log('Volviendo atras');
+  }
+  regresar() {
+    this.location.back();
+    this.location.back();
   }
 }
