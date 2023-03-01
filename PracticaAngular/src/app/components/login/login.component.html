@@ -1,3 +1,4 @@
+
 <!-- component -->
 <style>
   .login_img_section {
@@ -112,6 +113,7 @@
             >Olvide mi contraseña</a
           >
         </div>
+        <p *ngIf="usuarioInactivo == true">Si ya intentaste inciar sesion repetidas veces, puede que tu cuenta no este activada</p>
       </form>
     </div>
   </div>

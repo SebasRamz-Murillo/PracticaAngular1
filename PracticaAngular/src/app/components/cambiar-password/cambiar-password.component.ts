@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CambiarPasswordComponent {
   form: FormGroup;
   passwordsMatch = false;
+  correoInvalido = false;
 
   constructor(private router: Router, private loginService: LoginService, private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -29,8 +30,12 @@ export class CambiarPasswordComponent {
 
   OnSubmit(values: Usuario) {
     if (this.form.valid && this.passwordsMatch) {
-      this.loginService.cambiarContraseña(values).subscribe();
-      this.router.navigate(['']);
+      this.loginService.cambiarContraseña(values).subscribe(response => {
+        this.router.navigate(['']);
+      }, (error) => {
+        this.correoInvalido = true;
+        console.log(error);
+      });
     }
   }
 }

@@ -74,7 +74,7 @@ const routes: Routes = [
   { path: 'recuperarCuenta', component: ReenviarCodigoComponent },
   { path: 'cambiarContraseña', component: CambiarPasswordComponent },
   //Verificar si es usuario o administrador
-  { path: 'chef', component: ChefComponent, canActivate: [] },
+  { path: 'chef', component: ChefComponent, canActivate: [ValidarTokenGuard, ValidarRolGuard, ValidarCuentaGuard] },
   { path: 'chef/create', component: ChefFormComponent, canActivate: [ValidarTokenGuard, ValidarRolGuard, ValidarCuentaGuard] },
   { path: 'chef/edit/:id', component: ChefFormEditComponent, canActivate: [ValidarTokenGuard, ValidarRolAdminUsuarioGuard, ValidarCuentaGuard, ValidarIDGuard] },
   { path: 'chef/delete/:id', component: ChefDeleteComponent, canActivate: [ValidarTokenGuard, ValidarRolUsuarioGuard, ValidarCuentaGuard, ValidarIDGuard] },

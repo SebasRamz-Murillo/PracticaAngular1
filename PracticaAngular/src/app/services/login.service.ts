@@ -94,12 +94,18 @@ export class LoginService {
 
   }
   private handleError(error: HttpErrorResponse) {
-    if (error.status === 400) {
-      console.error('An error occurred:', error.error);
+    console.log(error); // Agregado para imprimir el error en la consola
+    if (error.error instanceof ErrorEvent) {
+      // Error del cliente
+      console.error('Ocurrió un error:', error.error.message);
     } else {
-      console.error('El backend devolvió el código ${error.status}, el cuerpo era:', error.error)
+      // Error del servidor
+      console.error(
+        `El servidor retornó el código ${error.status}, ` +
+        `el error retornado fue: ${error.error.message}`);
     }
-    return throwError(() => new Error('Algo malo sucedió; por favor, inténtelo de nuevo más tarde.'));
+    // Devuelve un observable con un mensaje de error
+    return throwError('Algo salió mal; por favor inténtelo de nuevo más tarde.');
   }
   cambiarContraseña(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.cambiarPassword, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
