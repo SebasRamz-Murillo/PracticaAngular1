@@ -48,8 +48,8 @@ export class UsuarioCodigoVerificacionComponent implements OnInit, OnDestroy {
   OnSubmit(values: Usuario, url: string) {
     this.route
     environment.URL_SIGNED = this.url;
-    console.log(environment.URL_SIGNED);
-    this.loginService.enviarCodigo(values, url).subscribe(
+    console.log('La ruta es '+ environment.URL_SIGNED);
+    this.loginService.enviarCodigo(values, environment.URL_SIGNED).subscribe(
       data => {
         // El código es correcto, realizar acción correspondiente
         console.log(data);

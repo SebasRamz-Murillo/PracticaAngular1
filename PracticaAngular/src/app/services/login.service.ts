@@ -35,7 +35,7 @@ export class LoginService {
     return this.http.get<Usuario[]>(this.obtenerRutaSigned).pipe(retry(3), catchError(this.handleError))
   }
   enviarCodigo(usuario: Usuario, url: string): Observable<Usuario> {
-    return this.http.post<Usuario>(url, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
+    return this.http.post<Usuario>('http://127.0.0.1:3333'+url, usuario).pipe(catchError(this.handleError)).pipe(tap(() => {
       this._refresh$.next();
     }
     ));

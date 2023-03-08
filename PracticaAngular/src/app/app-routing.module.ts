@@ -70,7 +70,7 @@ const routes: Routes = [
   { path: 'correo', component: InfoCorreoComponent },
 
   { path: 'registro', component: UsuarioRegistroComponent },
-  { path: 'registro/verificar/:url', component: UsuarioCodigoVerificacionComponent },
+  { path: 'registro/:url', component: UsuarioCodigoVerificacionComponent },
   { path: 'recuperarCuenta', component: ReenviarCodigoComponent },
   { path: 'cambiarContraseña', component: CambiarPasswordComponent },
   //Verificar si es usuario o administrador

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.loginService.login(values).pipe().subscribe((response: any) => {
         if (response) {
-          console.log(response);
+          console.log('Inicio de sesión exitoso');
           environment.usuarioInactivo = false;
 
           localStorage.setItem('token', response.token);
