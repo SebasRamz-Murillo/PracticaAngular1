@@ -4,4 +4,4 @@ export interface Receta{
   duracion: string;
   preparacion: string;
   chef: number;
-}
+  }

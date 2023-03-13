@@ -52,7 +52,7 @@ export class MapaFormEditComponent implements OnInit {
         id: this.mapa.id,
         nombre: this.mapa.nombre,
         descripcion: this.mapa.descripcion,
-        totalZonas: this.mapa.totalZonas,
+        totalZonas: this.mapa.total_zonas,
       });
     });
   }

@@ -1,7 +1,7 @@
 export interface Objeto {
     id: number;
     rareza: number;
-    limiteBolsa: number;
+    limite_bolsa: number;
     valor: number;
     nombre: string;
     descripcion: string;

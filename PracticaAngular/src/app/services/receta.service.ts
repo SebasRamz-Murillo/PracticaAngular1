@@ -19,6 +19,7 @@ export class RecetaService {
   private modificarReceta = this.APIURL + '/receta/update/';
   private eliminarReceta = this.APIURL + '/receta/delete/';
   private obtenerChefs = this.APIURL + '/receta/chefs';
+  private obtenerRecetasChef = this.APIURL + '/chef/info/';
 
   constructor(private http: HttpClient) { }
   get_refresh$() {
@@ -48,6 +49,7 @@ export class RecetaService {
 
     return this.http.get<Receta>(this.obtenerReceta + id).pipe(retry(3), catchError(this.handleError))
   }
+
 
   getChefs(): Observable<Receta[]> {
     const headers = new HttpHeaders({

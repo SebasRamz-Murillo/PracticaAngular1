@@ -1,6 +1,6 @@
 export interface Mapa{
     id: number;
-    totalZonas: number;
+    total_zonas: number;
     nombre: string;
     descripcion: string;
 }

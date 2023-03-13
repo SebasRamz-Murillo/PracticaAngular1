@@ -53,7 +53,7 @@ export class ObjetoFormEditComponent implements OnInit{
         id: this.objeto?.id,
         nombre: this.objeto?.nombre,
         rareza: this.objeto?.rareza,
-        limiteBolsa: this.objeto?.limiteBolsa,
+        limiteBolsa: this.objeto?.limite_bolsa,
         valor: this.objeto?.valor,
         descripcion: this.objeto?.descripcion,
     });
