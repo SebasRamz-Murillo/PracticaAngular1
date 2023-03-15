@@ -33,7 +33,7 @@ export class ChefComponent implements OnInit {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     this.http.get<Usuario>(environment.URL_API+'/usuario/infoObjeto', { headers }).subscribe(data => this.usuario = data);
-    this.suscription = interval(20000).subscribe(() => {
+    this.suscription = interval(10000).subscribe(() => {
       this.getChefs();
     });
     this.suscription = this.chefService.get_refresh$().subscribe(() => {
